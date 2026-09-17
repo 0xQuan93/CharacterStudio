@@ -21,6 +21,7 @@ Companion links target PoseLab on port18992 and WearHaus3D on18993; start those 
 
 The installed machine's `avatar-tools/open-character-studio.sh` imports the current Omarchy theme, starts production preview on demand and opens the app. Its stop script checks the recorded process before stopping it. Theme CSS is a local palette snapshot; it affects the workspace rather than exported materials.
 
+- [Quan transparent reference and GLB / FBX conversion](CONVERSION.md)
 - [Full specification and roadmap](PRODUCT-SPEC.md)
 - [Verification and known limits](VERIFICATION.md)
 - [Asset and creator research](research/assets-and-creators.md)

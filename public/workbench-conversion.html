@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quan reference & VRM conversion · Character Studio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font: 16px/1.6 system-ui;
+      background: #111a1c;
+      color: #e7eee9;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    main,
+    header {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+    header {
+      padding-bottom: 0;
+    }
+    a {
+      color: #b9ddc9;
+    }
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      line-height: 1.15;
+    }
+    h2 {
+      font-size: 1.35rem;
+    }
+    p {
+      max-width: 760px;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 330px) minmax(0, 1fr);
+      gap: 32px;
+    }
+    .cutout {
+      border-radius: 14px;
+      background-color: #d7dcdc;
+      background-image: linear-gradient(45deg, #edf0ed 25%, transparent 25%),
+        linear-gradient(-45deg, #edf0ed 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #edf0ed 75%),
+        linear-gradient(-45deg, transparent 75%, #edf0ed 75%);
+      background-size: 32px 32px;
+      background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+    }
+    .cutout img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .button,
+    button {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid #526568;
+      border-radius: 8px;
+      background: #263a3d;
+      color: #e7eee9;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    pre {
+      padding: 16px;
+      background: #081011;
+      border: 1px solid #34494c;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 0.85rem;
+    }
+    code {
+      font-family: ui-monospace, monospace;
+    }
+    .step {
+      padding: 18px 0;
+      border-top: 1px solid #34494c;
+    }
+    .tag {
+      color: #b9ddc9;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .muted {
+      color: #a7bbb9;
+    }
+    .note {
+      padding: 16px;
+      border-left: 3px solid #b9ddc9;
+      background: #1a2b2e;
+    }
+    footer {
+      padding: 28px 0;
+      color: #a7bbb9;
+    }
+    @media (max-width: 700px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .cutout {
+        max-width: 350px;
+        margin: auto;
+      }
+      main,
+      header {
+        padding: 18px;
+      }
+    }
+  </style>
+  <header>
+    <nav>
+      <a href="/workbench.html">← Character Studio</a
+      ><a href="/workbench-reference.html">Quan turnaround & headshot</a
+      ><a href="http://127.0.0.1:18992/">PoseLab ↗</a>
+    </nav>
+    <p class="tag">Local authoring workflow</p>
+    <h1>From a model to an editable avatar</h1>
+    <p>
+      Start with Quan’s clean reference. Inspect and convert a rigged GLB or FBX
+      through Blender, then open the VRM in Character Studio for sculpting,
+      painting and variations.
+    </p>
+  </header>
+  <main>
+    <div class="layout">
+      <section>
+        <div class="cutout">
+          <img
+            src="/workbench-reference/quan-full-body-transparent.png"
+            alt="Quan full body, front A-pose, warm brown skin, black hair with one mint forelock, charcoal jacket, trousers and boots on a transparent background"
+          />
+        </div>
+        <h2>Quan · full-body PNG</h2>
+        <p>
+          1024 × 1536 · real alpha transparency. One clear front view with
+          separated arms, visible fingers and complete boots. The checkerboard
+          here is only the page preview.
+        </p>
+        <a
+          class="button"
+          href="/workbench-reference/quan-full-body-transparent.png"
+          download="quan-front-transparent-v1.png"
+          >Download transparent PNG</a
+        >
+        <p class="muted">
+          An illustrated likeness reference, not a measured scan or a rigged
+          model.
+        </p>
+      </section>
+      <section>
+        <div class="step">
+          <h2>1. Inspect the source</h2>
+          <p>
+            The local converter accepts <strong>.glb</strong> and
+            <strong>.fbx</strong>. Run a preflight before conversion:
+          </p>
+          <pre id="preflight">
+/home/oxquan/Work/avatar-tools/conversion/convert.sh "/path/to/model.glb" --output "/path/to/new-inspection" --preflight</pre
+          >
+          <button data-copy="preflight">Copy preflight command</button>
+          <p>
+            The output folder must be new. Keep the source file. The report
+            identifies geometry, skinning and humanoid mapping; the Blender
+            authoring file is retained for repair.
+          </p>
+        </div>
+        <div class="step">
+          <h2>2. Prepare the humanoid</h2>
+          <p>
+            A skinned humanoid needs correct bone mapping, weights and rest
+            pose. Unrigged image-to-3D output needs a skeleton and weight
+            painting first. Missing blink, mouth shapes, eye motion and hair
+            physics remain authoring work.
+          </p>
+          <pre id="blender">
+/home/oxquan/Work/avatar-tools/conversion/open-blender.sh</pre
+          >
+          <button data-copy="blender">Copy Blender launch command</button>
+          <p>
+            Blender uses the isolated official VRM add-on. Open the saved
+            authoring file to inspect or fix the model. Large changes to
+            proportions require checking joints, clothing and expressions.
+          </p>
+        </div>
+        <div class="step">
+          <p class="note">
+            If FBX surfaces sort incorrectly or hair shows through the face,
+            review transparency by material. The converter accepts
+            <code>--material-overrides "/path/to/materials.json"</code> with
+            explicit <code>OPAQUE</code>, <code>MASK</code> or
+            <code>BLEND</code> settings. See the example in the local conversion
+            tools folder.
+          </p>
+          <h2>3. Convert and edit</h2>
+          <p>
+            Copy <code>metadata.example.json</code> from the conversion tools
+            folder and fill in the model’s actual title, authors and
+            permissions. Then export:
+          </p>
+          <pre id="convert">
+/home/oxquan/Work/avatar-tools/conversion/convert.sh "/path/to/model.glb" --output "/path/to/new-avatar" --metadata "/path/to/metadata.json"</pre
+          >
+          <button data-copy="convert">Copy conversion command</button>
+          <p>
+            If a checked model faces backward, add
+            <code>--yaw-degrees 180</code> and use a new output folder. This
+            rotates the whole imported character once; inspect the front view
+            after conversion.
+          </p>
+          <p>
+            Review <code>report.json</code>, keep <code>authoring.blend</code>,
+            and import <code>model.vrm</code> using <strong>＋</strong> in
+            Character Studio. Check materials and skin tone, try expressions and
+            motion, then save a portable project before sculpting.
+          </p>
+        </div>
+      </section>
+    </div>
+    <p class="note">
+      A file extension does not create a humanoid rig or restore missing
+      expressions. The conversion report and a motion check determine whether
+      the avatar is ready to use.
+    </p>
+    <footer>
+      Source references:
+      <a href="https://github.com/saturday06/VRM-Addon-for-Blender"
+        >VRM Add-on for Blender</a
+      >
+      ·
+      <a href="https://vrm-addon-for-blender.info/en-us/"
+        >Authoring documentation</a
+      >
+      · <a href="https://vrm.dev/en/">VRM specification and tools</a>. Local
+      setup details and test receipts are in
+      <code>avatar-tools/conversion/README.md</code>.
+    </footer>
+  </main>
+  <script>
+    document.querySelectorAll("[data-copy]").forEach((button) =>
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(
+            document.getElementById(button.dataset.copy).textContent,
+          )
+          const old = button.textContent
+          button.textContent = "Copied"
+          setTimeout(() => (button.textContent = old), 1800)
+        } catch {
+          button.textContent = "Select the command above to copy"
+        }
+      }),
+    )
+  </script>
+</html>

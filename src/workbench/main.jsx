@@ -708,6 +708,13 @@ function App() {
             <a href="http://127.0.0.1:18993/" target="_blank" rel="noreferrer">
               WearHaus 3D <span>Paint & fit ↗</span>
             </a>
+            <a
+              href="/workbench-conversion.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              VRM converter <span>GLB / FBX & Quan PNG ↗</span>
+            </a>
             <a href="/" target="_blank" rel="noreferrer">
               Classic studio <span>Modular VRM parts ↗</span>
             </a>
