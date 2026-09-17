@@ -210,12 +210,15 @@ export function patchGlb(input, project) {
     const legacy = json.extensions?.VRM?.materialProperties?.[Number(index)]
     if (legacy) {
       legacy.vectorProperties ||= {}
+      // VRM0 MToon stores gamma-2.2 RGB; its loader converts these back
+      // to linear and overrides the glTF fallback. Alpha stays linear.
+      const legacyRgb = rgb.map((value) => Math.pow(value, 1 / 2.2))
       legacy.vectorProperties._Color = [
-        ...rgb,
+        ...legacyRgb,
         legacy.vectorProperties._Color?.[3] ?? alpha,
       ]
       legacy.vectorProperties._ShadeColor = [
-        ...rgb.map((value) => value * 0.8),
+        ...rgb.map((value) => Math.pow(value * 0.8, 1 / 2.2)),
         legacy.vectorProperties._ShadeColor?.[3] ?? 1,
       ]
     }
