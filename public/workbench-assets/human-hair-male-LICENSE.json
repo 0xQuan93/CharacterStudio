@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-17",
+  "source": "https://raw.githubusercontent.com/madjin/vrm-samples/master/vroid/beta/HairSample_Male.vrm",
+  "mirror": "madjin/vrm-samples; not the original publisher",
+  "officialLicenseEvidence": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+  "officialEvidenceSummary": "The official sample-model FAQ explicitly lists HairSample_Male and HairSample_Female among historical CC0 models. This finding does not apply to current VRoid presets or sample A-Z.",
+  "embeddedVrmMeta": {
+    "version": "",
+    "author": "",
+    "contactInformation": "",
+    "reference": "",
+    "title": "HairSample_Male",
+    "texture": 24,
+    "allowedUserName": "Everyone",
+    "violentUssageName": "Allow",
+    "sexualUssageName": "Allow",
+    "commercialUssageName": "Allow",
+    "otherPermissionUrl": "",
+    "licenseName": "CC0",
+    "otherLicenseUrl": ""
+  }
+}

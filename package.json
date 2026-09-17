@@ -15,7 +15,8 @@
     "lint": "npm run lint:js && npm run lint:prettier",
     "lint:js": "eslint --cache --ext .js,.jsx ./src",
     "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
-    "get-assets": "cd public && git clone --depth 1 --branch main https://github.com/m3-org/loot-assets.git"
+    "get-assets": "cd public && git clone --depth 1 --branch main https://github.com/m3-org/loot-assets.git",
+    "test:workbench": "node tests/workbench-core.test.mjs"
   },
   "dependencies": {
     "@ethersproject/providers": "^5.5.1",
