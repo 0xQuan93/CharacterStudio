@@ -141,7 +141,11 @@ export class Viewport {
             if (!this.morphs.some((m) => m.key === key))
               this.morphs.push({
                 key,
-                name: /^\d+$/.test(name) ? `Shape key ${index + 1}` : name,
+                name:
+                  gltf.parser.json.meshes[mi]?.extras?.targetNames?.[index] ||
+                  gltf.parser.json.meshes[mi]?.primitives?.[a?.primitives ?? 0]
+                    ?.extras?.targetNames?.[index] ||
+                  (/^\d+$/.test(name) ? `Shape key ${index + 1}` : name),
                 initial: o.morphTargetInfluences[index] || 0,
               })
           },
@@ -346,6 +350,19 @@ export class Viewport {
     const b = new THREE.Box3().setFromObject(this.display),
       s = b.getSize(new THREE.Vector3()),
       c = b.getCenter(new THREE.Vector3())
+    if (view === "face" && this.vrm) {
+      this.display.updateMatrixWorld(true)
+      const head = this.vrm.humanoid.getRawBoneNode("head")
+      if (head) {
+        const center = head.getWorldPosition(new THREE.Vector3())
+        center.y += s.y * 0.055
+        this.controls.target.copy(center)
+        const distance = Math.max(s.y * 0.42, 0.25)
+        this.camera.position.copy(center).add(new THREE.Vector3(0, 0, distance))
+        this.controls.update()
+        return
+      }
+    }
     const size = Math.max(s.x, s.y, s.z, 0.1),
       d = size * 2.3
     this.controls.target.copy(c)

@@ -19,6 +19,12 @@ import {
   decodeBytes,
   filename,
 } from "./storage.js"
+import {
+  describeAppearance,
+  EMPTY_APPEARANCE,
+  colorGroup,
+  setHairVisibility,
+} from "./appearance.js"
 import "./workbench.css"
 
 const initial = {
@@ -112,6 +118,7 @@ function App() {
     [draft, setDraft] = useState(null),
     [catalog, setCatalog] = useState(seedAssets),
     [info, setInfo] = useState(emptyInfo),
+    [appearance, setAppearance] = useState(EMPTY_APPEARANCE),
     [ready, setReady] = useState(false),
     [busy, setBusy] = useState(false),
     [status, setStatus] = useState("Opening your workbench…"),
@@ -183,6 +190,7 @@ function App() {
     setLoaded(false)
     source.current = null
     setInfo(emptyInfo)
+    setAppearance(EMPTY_APPEARANCE)
     setError("")
     setPlaying(false)
     setClip("")
@@ -230,6 +238,7 @@ function App() {
           if (cancelled) return
           source.current = bytes
           nextInfo = await view.current.load(bytes, project)
+          if (!cancelled) setAppearance(describeAppearance(glb.json))
           if (
             nextInfo &&
             Object.keys(project.textures || {}).some(
@@ -370,7 +379,7 @@ function App() {
         },
       }),
     )
-    setTab("Shape")
+    setTab(a.category === "Human" ? "Appearance" : "Shape")
   }
   async function importModel(file) {
     try {
@@ -393,7 +402,7 @@ function App() {
           }),
         ),
       )
-      setTab("Shape")
+      setTab("Appearance")
     } catch (e) {
       setError(e.message)
     } finally {
@@ -416,7 +425,7 @@ function App() {
         )
       setDraft(null)
       setHistory((h) => commitHistory(h, p))
-      setTab("Shape")
+      setTab(p.kind === "spirit" ? "Shape" : "Appearance")
       setStatus("Project opened.")
     } catch (e) {
       setError(e.message)
@@ -654,6 +663,9 @@ function App() {
             <div className="stage-controls">
               <button onClick={() => view.current.fit("front")}>Front</button>
               <button onClick={() => view.current.fit("side")}>Side</button>
+              {info.isVRM && (
+                <button onClick={() => view.current.fit("face")}>Face</button>
+              )}
               <button
                 title="Frame model · F"
                 onClick={() => view.current.fit()}
@@ -709,7 +721,14 @@ function App() {
         </main>
         <aside className="inspector">
           <nav aria-label="Character tools">
-            {["Shape", "Surface", "Parts", "Motion", "Export"].map((t) => (
+            {[
+              ...(!isSpirit ? ["Appearance"] : []),
+              "Shape",
+              "Surface",
+              "Parts",
+              "Motion",
+              "Export",
+            ].map((t) => (
               <button
                 key={t}
                 className={tab === t ? "active" : ""}
@@ -721,7 +740,9 @@ function App() {
           </nav>
           <div className="inspector-content">
             <small className="eyebrow">
-              {tab === "Shape"
+              {tab === "Appearance"
+                ? "SKIN, HAIR & FACE"
+                : tab === "Shape"
                 ? "FORM & CHARACTER"
                 : tab === "Surface"
                 ? "COLOR & MATERIAL"
@@ -732,7 +753,9 @@ function App() {
                 : "TAKE IT SOMEWHERE"}
             </small>
             <h1>
-              {tab === "Shape"
+              {tab === "Appearance"
+                ? "Define their look"
+                : tab === "Shape"
                 ? "Make it your own"
                 : tab === "Surface"
                 ? "Set the palette"
@@ -749,6 +772,281 @@ function App() {
                   ×
                 </button>
               </div>
+            )}
+            {tab === "Appearance" && (
+              <>
+                <p className="intro">
+                  Bring the face, skin, and hair together. Each control follows
+                  the parts available in this model.
+                </p>
+                {appearance.groups.length > 0 && (
+                  <div className="callout">
+                    <h3>Quan · palette study</h3>
+                    <p>
+                      Warm skin, dark hair, a mint eye tint. A starting palette
+                      for the reference design.
+                    </p>
+                    <button
+                      className="wide"
+                      disabled={busy}
+                      onClick={() => {
+                        const palette = {
+                          skin: "#c89470",
+                          hair: "#191716",
+                          brows: "#191716",
+                          eyes: "#a6c6bd",
+                        }
+                        let colors = { ...project.colors }
+                        for (const group of appearance.groups)
+                          colors = colorGroup(
+                            colors,
+                            group.indices,
+                            palette[group.id],
+                          )
+                        change({ colors })
+                      }}
+                    >
+                      Apply Quan palette
+                    </button>
+                    <a
+                      href="/workbench-reference.html"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open Quan reference sheet ↗
+                    </a>
+                  </div>
+                )}
+                {appearance.groups.map((group) => (
+                  <div className="appearance-group" key={group.id}>
+                    <label className="color-row">
+                      <span>{group.label}</span>
+                      <input
+                        type="color"
+                        aria-label={group.label}
+                        disabled={busy}
+                        value={
+                          project.colors[group.indices[0]] ||
+                          info.materials.find(
+                            (m) => m.index === group.indices[0],
+                          )?.color ||
+                          "#ffffff"
+                        }
+                        onChange={(e) =>
+                          change({
+                            colors: colorGroup(
+                              project.colors,
+                              group.indices,
+                              e.target.value,
+                            ),
+                          })
+                        }
+                      />
+                    </label>
+                    <div
+                      className="appearance-swatches"
+                      aria-label={`${group.label} palette`}
+                    >
+                      {group.swatches.map((color) => (
+                        <button
+                          key={color}
+                          style={{ background: color }}
+                          title={color}
+                          aria-label={`${group.label} ${color}`}
+                          disabled={busy}
+                          onClick={() =>
+                            change({
+                              colors: colorGroup(
+                                project.colors,
+                                group.indices,
+                                color,
+                              ),
+                            })
+                          }
+                        />
+                      ))}
+                      <button
+                        className="text-button"
+                        disabled={busy}
+                        onClick={() =>
+                          change({
+                            colors: colorGroup(
+                              project.colors,
+                              group.indices,
+                              null,
+                            ),
+                          })
+                        }
+                      >
+                        Original
+                      </button>
+                    </div>
+                  </div>
+                ))}
+                {appearance.groups.length > 0 ? (
+                  <p className="hint">
+                    Colors tint the original textures. Skin changes face and
+                    body together; texture shading still affects the result.
+                  </p>
+                ) : (
+                  <p className="empty">
+                    This model has no recognized skin, iris, or hair materials.
+                    Use Surface to choose its colors individually.
+                  </p>
+                )}
+                {appearance.hairMeshes.length > 0 && (
+                  <div className="section">
+                    <h3>Hairstyle</h3>
+                    <label className="field-label">
+                      Hair style
+                      <select
+                        aria-label="Hair style"
+                        disabled={busy}
+                        value={
+                          appearance.hairMeshes.every((i) =>
+                            project.hiddenMeshes.includes(i),
+                          )
+                            ? "none"
+                            : appearance.hairMeshes.some((i) =>
+                                project.hiddenMeshes.includes(i),
+                              )
+                            ? "custom"
+                            : "authored"
+                        }
+                        onChange={(e) =>
+                          change({
+                            hiddenMeshes: setHairVisibility(
+                              project.hiddenMeshes,
+                              appearance.hairMeshes,
+                              e.target.value !== "none",
+                            ),
+                          })
+                        }
+                      >
+                        <option value="authored">Original hairstyle</option>
+                        <option value="none">No hair</option>
+                        {appearance.hairMeshes.some((i) =>
+                          project.hiddenMeshes.includes(i),
+                        ) &&
+                          !appearance.hairMeshes.every((i) =>
+                            project.hiddenMeshes.includes(i),
+                          ) && (
+                            <option value="custom">Custom visible parts</option>
+                          )}
+                      </select>
+                    </label>
+                    <p className="hint">
+                      This starter has one authored hairstyle. More fitted
+                      styles need compatible hair assets.
+                    </p>
+                  </div>
+                )}
+                {appearance.identityFeatures.length > 0 && (
+                  <div className="section">
+                    <h3>Facial features</h3>
+                    <p className="hint">
+                      Subtle, local shape changes. Zero restores the starting
+                      face.
+                    </p>
+                    {appearance.identityFeatures
+                      .filter((f) => info.morphs.some((m) => m.key === f.key))
+                      .map((feature) => (
+                        <Range
+                          key={feature.key}
+                          label={feature.label}
+                          min={feature.min}
+                          max={feature.max}
+                          value={
+                            project.morphs[feature.key] ??
+                            info.morphs.find((m) => m.key === feature.key)
+                              ?.initial ??
+                            0
+                          }
+                          onPreview={(v) =>
+                            change(
+                              {
+                                morphs: { ...project.morphs, [feature.key]: v },
+                              },
+                              true,
+                            )
+                          }
+                          onCommit={(v) =>
+                            change({
+                              morphs: { ...project.morphs, [feature.key]: v },
+                            })
+                          }
+                        />
+                      ))}
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        const morphs = { ...project.morphs }
+                        appearance.identityFeatures.forEach(
+                          (f) => delete morphs[f.key],
+                        )
+                        change({ morphs })
+                      }}
+                    >
+                      Reset facial features
+                    </button>
+                  </div>
+                )}
+                <details className="section face-details">
+                  <summary>Resting expression details</summary>
+                  <p className="hint">
+                    Authored brow, eye, and mouth expressions can adjust the
+                    resting face. These are expression shapes, not anatomical
+                    nose or jaw controls.
+                  </p>
+                  {appearance.faceFeatures
+                    .filter((f) => info.morphs.some((m) => m.key === f.key))
+                    .map((feature) => {
+                      const morph = info.morphs.find(
+                        (m) => m.key === feature.key,
+                      )
+                      return (
+                        <Range
+                          key={feature.key}
+                          label={feature.label}
+                          value={project.morphs[feature.key] ?? morph.initial}
+                          onPreview={(v) =>
+                            change(
+                              {
+                                morphs: { ...project.morphs, [feature.key]: v },
+                              },
+                              true,
+                            )
+                          }
+                          onCommit={(v) =>
+                            change({
+                              morphs: { ...project.morphs, [feature.key]: v },
+                            })
+                          }
+                        />
+                      )
+                    })}
+                  {!appearance.faceFeatures.length && (
+                    <p className="empty">
+                      No named, independently editable face shapes were found.
+                      Shape contains the model’s other authored keys.
+                    </p>
+                  )}
+                  {appearance.faceFeatures.length > 0 && (
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        const morphs = { ...project.morphs }
+                        appearance.faceFeatures.forEach(
+                          (f) => delete morphs[f.key],
+                        )
+                        change({ morphs })
+                      }}
+                    >
+                      Reset face details
+                    </button>
+                  )}
+                </details>
+              </>
             )}
             {tab === "Shape" && (
               <>
@@ -854,7 +1152,7 @@ function App() {
                         />
                         {info.morphs
                           .filter((m) =>
-                            m.name
+                            (appearance.names[m.key] || m.name)
                               .toLowerCase()
                               .includes(morphSearch.toLowerCase()),
                           )
@@ -862,7 +1160,12 @@ function App() {
                           .map((m) => (
                             <Range
                               key={m.key}
-                              label={m.name}
+                              label={appearance.names[m.key] || m.name}
+                              min={
+                                appearance.identityFeatures.find(
+                                  (f) => f.key === m.key,
+                                )?.min ?? 0
+                              }
                               value={project.morphs[m.key] ?? m.initial}
                               onPreview={(v) =>
                                 change(
@@ -1268,7 +1571,7 @@ function App() {
             )}
           </div>
           <div className="inspector-bottom">
-            <span>WORKBENCH 0.1</span>
+            <span>WORKBENCH 0.2</span>
             <span>LOCAL FIRST</span>
           </div>
         </aside>

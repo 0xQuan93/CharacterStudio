@@ -1,5 +1,18 @@
 [
   {
+    "id": "human-face-study",
+    "name": "Human Face Study",
+    "category": "Human",
+    "url": "/workbench-assets/human-face-controls.vrm",
+    "license": "CC0-1.0",
+    "author": "pixiv Inc. (historical VRoid beta sample)",
+    "source": "https://github.com/madjin/vrm-samples/blob/master/vroid/beta/HairSample_Male.vrm",
+    "licenseUrl": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+    "description": "CC0 human starter with bounded jaw width, chin length and nose width controls. A modeling base, not a finished Quan likeness.",
+    "sha256": "b51f9d3815655436f0c3875a5f095c4825dfca1c6190ce263fec6fa644e16ba8",
+    "thumbnail": "/workbench-assets/thumbnails/human.webp"
+  },
+  {
     "id": "beta-hair-male",
     "name": "Anime Hair Study",
     "category": "Human",

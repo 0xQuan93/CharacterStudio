@@ -1,0 +1,29 @@
+{
+  "source": "human-hair-male.vrm",
+  "sourceSha256": "b1e0179be9b42cf7ddc9ab52ef336e864cd39cc971db2a0151e5b115c16bf7fe",
+  "output": "human-face-controls.vrm",
+  "sha256": "b51f9d3815655436f0c3875a5f095c4825dfca1c6190ce263fec6fa644e16ba8",
+  "license": "CC0-1.0",
+  "targets": [
+    {
+      "name": "Identity_JawWidth",
+      "index": 39,
+      "maxDisplacementMeters": 0.007389402961076021
+    },
+    {
+      "name": "Identity_ChinLength",
+      "index": 40,
+      "maxDisplacementMeters": 0.008
+    },
+    {
+      "name": "Identity_NoseWidth",
+      "index": 41,
+      "maxDisplacementMeters": 0.0037028669759914144
+    }
+  ],
+  "safeWeightRange": [
+    -1,
+    1
+  ],
+  "notes": "Asset-specific lower-face deformations. Untouched eye vertices, original skeleton, textures, VRM metadata and expression targets. Normal deltas from displacement Jacobian. Not an anatomical human generator."
+}

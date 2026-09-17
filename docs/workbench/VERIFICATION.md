@@ -84,3 +84,15 @@ This proves file transfer, material application, project serialization and valid
 - No complete sculpting, anatomical parameter generator, curve hair editor, integrated layer painter, universal wardrobe fitting or final Quan/Zephyr design has been delivered. Those remain explicit milestones in the product specification.
 
 Update this ledger after future source or asset changes with actual rerun results and artifact links. Retain the distinction between structural validation, visible rendering and authored-asset quality.
+
+## Workbench0.2 acceptance · 2026-09-17
+
+`npm run test:workbench` now passes13 core tests, the semantic-appearance assertion suite and2 generated-face-target tests. Signed weights are preserved by the validator and GLB writer. `npm run build` passes with the existing chunk-size advisory.
+
+The production `avatar-tools/check-workbench-appearance.cjs` passes six workflow groups with zero page errors: grouped skin undo/redo; Quan palette and signed face edits; hair visibility and material isolation; portable project save; edited VRM export/reimport with signed weights and preserved metadata; portable reopen restoring original hair;390px responsive layout. Evidence: [report](../../../../avatar-tools/logs/workbench-appearance.json), [face](../../../../avatar-tools/logs/workbench-appearance-face.png), [restored](../../../../avatar-tools/logs/workbench-appearance-restored.png), [mobile](../../../../avatar-tools/logs/workbench-appearance-mobile.png).
+
+The actual browser-exported `workbench-appearance.vrm` passes Khronos glTF validation with0 errors/132 inherited warnings after excluding repetitive zero-weight joint warnings; report is untruncated. [Validation report](../../../../avatar-tools/logs/workbench-appearance.validation.json). The derivative itself has0 errors and exact warning parity with source. The original source/model remains unchanged.
+
+The original iris texture is blue: mint tint does not yield literal mint irises. UI notes source texture tinting and describes the Quan eye setting as a tint. Hair options remain Original/No hair, not new fitted hairstyles. Face targets are modest source-specific deformations, not full anatomical generation.
+
+Quan's full reference PNG was visually inspected after Remotion composition: all views and labels visible, exact existing insignia, no overlap with faces. The local reference page and new catalog entry are served successfully. Raw plate1536×1024; composed sheet3072×2400. Added outfit details are explicitly proposed and reference views are not metric orthographic drawings.

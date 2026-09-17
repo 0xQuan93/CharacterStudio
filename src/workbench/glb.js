@@ -228,7 +228,7 @@ export function patchGlb(input, project) {
     if (
       !/^\d+:\d+$/.test(key) ||
       !Number.isFinite(value) ||
-      value < 0 ||
+      value < -1 ||
       value > 1
     )
       fail("Invalid morph edit")

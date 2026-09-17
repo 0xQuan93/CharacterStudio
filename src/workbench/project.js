@@ -243,7 +243,7 @@ export function validateProject(input) {
   for (const [key, value] of morphs) {
     if (!/^(0|[1-9]\d{0,5}):(0|[1-9]\d{0,4})$/.test(key))
       fail("Invalid morph index")
-    result.morphs[key] = finite(value, 0, 1, "morph weight")
+    result.morphs[key] = finite(value, -1, 1, "morph weight")
   }
   if (input.scale !== undefined) {
     if (!Array.isArray(input.scale) || input.scale.length !== 3)

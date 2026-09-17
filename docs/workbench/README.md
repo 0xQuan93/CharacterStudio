@@ -1,4 +1,6 @@
-# Local avatar workbench 0.1
+# Local avatar workbench 0.2
+
+[New in0.2: appearance controls and Quan reference](RELEASE-0.2.md).
 
 Open `/workbench.html` for the broad human, creature, robot and companion editor. The original modular Character Studio remains at `/`.
 

@@ -993,3 +993,41 @@ i {
     flex-wrap: wrap;
   }
 }
+
+.appearance-group {
+  margin: 15px 0 22px;
+}
+.appearance-group .color-row {
+  margin-bottom: 8px;
+}
+.appearance-swatches {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.appearance-swatches button:not(.text-button) {
+  width: 28px;
+  height: 28px;
+  min-height: 28px;
+  padding: 0;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+}
+.appearance-swatches .text-button {
+  font-size: 11px;
+  padding: 4px;
+}
+.inspector nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.inspector nav button {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.face-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
+}

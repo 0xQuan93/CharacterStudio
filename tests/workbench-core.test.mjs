@@ -469,3 +469,21 @@ test("portable texture images are dimension-bounded before any browser decoding"
     /dimension header/,
   )
 })
+
+test("signed identity weights survive validation, history and source-preserving export", () => {
+  const project = validateProject({
+    ...DEFAULT_PROJECT,
+    morphs: { "0:0": -0.65 },
+  })
+  const saved = JSON.parse(JSON.stringify(project))
+  assert.equal(validateProject(saved).morphs["0:0"], -0.65)
+  const history = commitHistory(createHistory(DEFAULT_PROJECT), project)
+  assert.equal(redoHistory(undoHistory(history)).current.morphs["0:0"], -0.65)
+  const exported = parseGlb(patchGlb(buildGlb(fixture()), project)).json
+  assert.equal(exported.meshes[0].weights[0], -0.65)
+  assert.equal(exported.nodes[0].weights[0], -0.65)
+  assert.throws(
+    () => validateProject({ ...project, morphs: { "0:0": -1.01 } }),
+    /morph weight/,
+  )
+})
