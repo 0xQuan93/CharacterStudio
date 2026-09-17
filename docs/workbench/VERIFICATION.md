@@ -96,3 +96,11 @@ The actual browser-exported `workbench-appearance.vrm` passes Khronos glTF valid
 The original iris texture is blue: mint tint does not yield literal mint irises. UI notes source texture tinting and describes the Quan eye setting as a tint. Hair options remain Original/No hair, not new fitted hairstyles. Face targets are modest source-specific deformations, not full anatomical generation.
 
 Quan's full reference PNG was visually inspected after Remotion composition: all views and labels visible, exact existing insignia, no overlap with faces. The local reference page and new catalog entry are served successfully. Raw plate1536×1024; composed sheet3072×2400. Added outfit details are explicitly proposed and reference views are not metric orthographic drawings.
+
+## Color editor containment · 2026-09-17
+
+Replaced all workbench native `input[type=color]` controls (Appearance, spirit and generic Surface) with shared `ColorControl.jsx`. The editor uses a native modal dialog in the browser top layer, a contained react-colorful picker, a hex field and explicit Apply/Cancel. Its size follows the viewport; a scrollable middle section keeps actions available in very short windows. This removes browser/OS popup positioning from the right-edge inspector. Hex-value trigger buttons make current colors visible without opening a picker.
+
+Changes are local drafts until Apply, so a picker gesture produces one undo entry. Cancel/Escape discard edits, invalid hex blocks Apply, focus returns to the trigger, and background studio shortcuts are suppressed while a dialog is open. No color conversion or export semantics changed. Existing installed react-colorful was reused without dependency changes.
+
+`avatar-tools/check-workbench-picker.cjs` verifies desktop1500×1000, laptop1024×600, mobile390×844 and short568×320 containment for both spirit and human controls; zero native color inputs; no horizontal page overflow; cancel/escape; grouped skin face/body save, one-step undo/redo, actual VRM color factors, and portable project reopen. Report: [workbench-picker.json](../../../../avatar-tools/logs/workbench-picker.json). Core13+semantic+2geometry checks and production build pass. This fix targets the local workbench; the separate upstream Classic editor is unchanged.

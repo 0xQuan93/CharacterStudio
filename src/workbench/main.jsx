@@ -1,3 +1,4 @@
+import { ColorControl } from "./ColorControl.jsx"
 import React, { useEffect, useRef, useState } from "react"
 import { createRoot } from "react-dom/client"
 import { Viewport } from "./viewport.js"
@@ -347,6 +348,7 @@ function App() {
   }
   useEffect(() => {
     const handler = (e) => {
+      if (document.querySelector("dialog[open]")) return
       if (e.target.closest("input,textarea,select")) return
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
         e.preventDefault()
@@ -819,10 +821,9 @@ function App() {
                 )}
                 {appearance.groups.map((group) => (
                   <div className="appearance-group" key={group.id}>
-                    <label className="color-row">
+                    <div className="color-row">
                       <span>{group.label}</span>
-                      <input
-                        type="color"
+                      <ColorControl
                         aria-label={group.label}
                         disabled={busy}
                         value={
@@ -842,7 +843,7 @@ function App() {
                           })
                         }
                       />
-                    </label>
+                    </div>
                     <div
                       className="appearance-swatches"
                       aria-label={`${group.label} palette`}
@@ -1200,37 +1201,34 @@ function App() {
                 </p>
                 {isSpirit ? (
                   <>
-                    <label className="color-row">
+                    <div className="color-row">
                       <span>Body</span>
-                      <input
+                      <ColorControl
                         aria-label="Spirit body color"
-                        type="color"
                         value={project.parameters.bodyColor}
                         onChange={(e) =>
                           parameters("bodyColor", e.target.value, false)
                         }
                       />
-                    </label>
-                    <label className="color-row">
+                    </div>
+                    <div className="color-row">
                       <span>Memory fragment</span>
-                      <input
+                      <ColorControl
                         aria-label="Fragment color"
-                        type="color"
                         value={project.parameters.accentColor}
                         onChange={(e) =>
                           parameters("accentColor", e.target.value, false)
                         }
                       />
-                    </label>
+                    </div>
                   </>
                 ) : (
                   info.materials.map((m) => (
                     <div className="material-block" key={m.index}>
-                      <label className="color-row">
+                      <div className="color-row">
                         <span>{m.name}</span>
-                        <input
+                        <ColorControl
                           aria-label={`Color ${m.name}`}
-                          type="color"
                           value={project.colors[m.index] || m.color}
                           onChange={(e) =>
                             change({
@@ -1241,7 +1239,7 @@ function App() {
                             })
                           }
                         />
-                      </label>
+                      </div>
                       <div className="texture-row">
                         <button
                           disabled={busy || !m.canTexture}
