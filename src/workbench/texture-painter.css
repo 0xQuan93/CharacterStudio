@@ -1,0 +1,135 @@
+.texture-painter {
+  box-sizing: border-box;
+  width: min(1000px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  margin: auto;
+  padding: 0;
+  color: var(--text, #eef1ed);
+  background: var(--panel, #242925);
+  border: 1px solid var(--border, #596158);
+  border-radius: 18px;
+  overflow: auto;
+}
+.texture-painter::backdrop {
+  background: #000a;
+}
+.texture-painter-heading,
+.texture-painter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+.texture-painter-heading {
+  border-bottom: 1px solid var(--border, #596158);
+}
+.texture-painter-heading h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+.texture-painter-heading small {
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+}
+.texture-painter-content {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+.texture-painter-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+.texture-painter-toolbar label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+}
+.texture-painter-toolbar select {
+  width: 100%;
+}
+.texture-painter-toolbar input[type="range"] {
+  width: 100%;
+}
+.texture-painter-toolbar p {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.72;
+  margin: 0;
+}
+.texture-painter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.texture-painter-image {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+.texture-painter-image canvas {
+  display: block;
+  max-width: 100%;
+  max-height: min(58dvh, 650px);
+  width: auto;
+  height: auto;
+  touch-action: none;
+  cursor: crosshair;
+  background-color: #666;
+  background-image: conic-gradient(
+    #888 25%,
+    transparent 0 50%,
+    #888 0 75%,
+    transparent 0
+  );
+  background-size: 20px 20px;
+}
+.texture-painter-image small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+.texture-painter-actions {
+  justify-content: flex-end;
+  border-top: 1px solid var(--border, #596158);
+  position: sticky;
+  bottom: 0;
+  background: var(--panel, #242925);
+}
+.texture-painter-error {
+  padding: 0 20px;
+  color: #ffb3a9;
+}
+@media (max-width: 650px) {
+  .texture-painter-content {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+  .texture-painter-image {
+    grid-row: 1;
+  }
+  .texture-painter-image canvas {
+    max-height: 40dvh;
+  }
+  .texture-painter-toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .texture-painter-toolbar p,
+  .texture-painter-buttons {
+    grid-column: 1 / -1;
+  }
+  .texture-painter-heading,
+  .texture-painter-actions {
+    padding: 12px 14px;
+  }
+}

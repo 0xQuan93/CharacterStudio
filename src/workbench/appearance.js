@@ -13,7 +13,8 @@ export function describeAppearance(json) {
   )
   const find = (pattern) =>
     materials.flatMap((m, index) =>
-      referencedMaterials.has(index) && pattern.test(m.name || "")
+      referencedMaterials.has(index) &&
+      pattern.test(m.extras?.characterStudioSourceName || m.name || "")
         ? [index]
         : [],
     )
@@ -47,7 +48,7 @@ export function describeAppearance(json) {
     {
       id: "hair",
       label: "Hair color",
-      indices: find(/_Hair_\d+_HAIR$/i),
+      indices: find(/_Hair_\d+_HAIR(?:_\d+)?$/i),
       swatches: [
         "#191716",
         "#503527",

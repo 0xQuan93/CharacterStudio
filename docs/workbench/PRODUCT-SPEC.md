@@ -1,5 +1,7 @@
 # Character Studio: local avatar workbench
 
+Current delivered scope: [Workbench 0.3](RELEASE-0.3.md) adds supported VRM sculpt brushes, UV texture painting, independent hair-section tints, seeded family variation, and a second CC0 human source. The release notes supersede earlier implementation-status statements below; broader authoring and generator milestones remain a roadmap.
+
 Product and technical specification · 2026-09-17 · workbench 0.2
 
 The delivered0.2 increment adds semantic skin/eye/hair/brow controls, bounded jaw/chin/nose geometry targets on a separate human derivative, face framing and the Quan reference sheet. See [RELEASE-0.2.md](RELEASE-0.2.md). The foundational0.1 ledger below remains historical; this increment does not complete the anatomical generator or multi-style hair milestones.

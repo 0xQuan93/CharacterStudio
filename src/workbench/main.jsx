@@ -1,3 +1,5 @@
+import { generateVariation } from "./generator.js"
+import { TexturePainter } from "./TexturePainter.jsx"
 import { ColorControl } from "./ColorControl.jsx"
 import React, { useEffect, useRef, useState } from "react"
 import { createRoot } from "react-dom/client"
@@ -135,7 +137,18 @@ function App() {
     [light, setLight] = useState("studio"),
     [nameDraft, setNameDraft] = useState(initial.name),
     [loaded, setLoaded] = useState(false),
-    [expression, setExpression] = useState("")
+    [expression, setExpression] = useState(""),
+    [accentPicking, setAccentPicking] = useState(false),
+    [accentTarget, setAccentTarget] = useState(null),
+    [paintTarget, setPaintTarget] = useState(null),
+    [sculptActive, setSculptActive] = useState(false),
+    [sculptMesh, setSculptMesh] = useState(0),
+    [brush, setBrush] = useState({
+      mode: "inflate",
+      radius: 0.04,
+      strength: 0.15,
+      symmetry: true,
+    })
   const project = draft || history.current,
     asset = catalog.find((a) => a.id === project.assetId),
     isSpirit = project.kind === "spirit"
@@ -310,6 +323,54 @@ function App() {
     if (busy) return
     setDraft(null)
     setHistory((h) => redoHistory(h))
+  }
+  useEffect(() => {
+    if (!view.current) return
+    view.current.onSculptCommit = (edits) => {
+      change({ sculpt: edits })
+      setStatus("Sculpt stroke applied. Undo restores the previous shape.")
+    }
+    view.current.onSculptError = (e) => setError(e.message)
+  })
+  useEffect(() => {
+    if (!view.current) return
+    view.current.setSculptSettings({
+      ...brush,
+      meshIndex: sculptMesh,
+      enabled:
+        tab === "Sculpt" && sculptActive && info.isVRM && loaded && !busy,
+    })
+  }, [tab, sculptActive, sculptMesh, brush, info.isVRM, loaded, busy])
+  useEffect(() => {
+    if (!view.current) return
+    view.current.accentPicking = accentPicking && tab === "Appearance" && !busy
+    view.current.onAccentPick = (target) => {
+      setAccentTarget(target)
+      setAccentPicking(false)
+      setStatus(
+        "Hair section selected. Its color can now be edited independently.",
+      )
+    }
+  }, [accentPicking, tab, busy])
+  useEffect(() => {
+    setAccentTarget(null)
+    setAccentPicking(false)
+  }, [project.assetId, project.source?.data])
+  useEffect(() => {
+    setSculptMesh(info.meshes.find((m) => m.sculptable)?.index ?? 0)
+    setSculptActive(false)
+  }, [info])
+  function paintMaterial(index) {
+    try {
+      setPaintTarget({
+        index,
+        label: info.materials.find((m) => m.index === index)?.name || "Surface",
+        source: view.current.textureImage(index),
+        shadeRatio: view.current.textureShadeRatio(index),
+      })
+    } catch (e) {
+      setError(e.message)
+    }
   }
   async function saveProject() {
     if (busy || !loaded) return
@@ -726,6 +787,7 @@ function App() {
             {[
               ...(!isSpirit ? ["Appearance"] : []),
               "Shape",
+              ...(info.isVRM ? ["Sculpt"] : []),
               "Surface",
               "Parts",
               "Motion",
@@ -742,7 +804,9 @@ function App() {
           </nav>
           <div className="inspector-content">
             <small className="eyebrow">
-              {tab === "Appearance"
+              {tab === "Sculpt"
+                ? "SHAPE THE SURFACE"
+                : tab === "Appearance"
                 ? "SKIN, HAIR & FACE"
                 : tab === "Shape"
                 ? "FORM & CHARACTER"
@@ -755,7 +819,9 @@ function App() {
                 : "TAKE IT SOMEWHERE"}
             </small>
             <h1>
-              {tab === "Appearance"
+              {tab === "Sculpt"
+                ? "Sculpt their form"
+                : tab === "Appearance"
                 ? "Define their look"
                 : tab === "Shape"
                 ? "Make it your own"
@@ -774,6 +840,107 @@ function App() {
                   ×
                 </button>
               </div>
+            )}
+            {tab === "Sculpt" && (
+              <>
+                <p className="intro">
+                  Reshape the existing mesh with soft, reversible strokes. Start
+                  small around the face. The rig and original expression targets
+                  stay attached.
+                </p>
+                <label className="field-label">
+                  Surface to sculpt
+                  <select
+                    aria-label="Sculpt surface"
+                    value={sculptMesh}
+                    onChange={(e) => setSculptMesh(Number(e.target.value))}
+                  >
+                    {info.meshes
+                      .filter((m) => m.sculptable)
+                      .map((m) => (
+                        <option key={m.index} value={m.index}>
+                          {m.name}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+                <label className="field-label">
+                  Brush
+                  <select
+                    aria-label="Sculpt brush"
+                    value={brush.mode}
+                    onChange={(e) =>
+                      setBrush({ ...brush, mode: e.target.value })
+                    }
+                  >
+                    <option value="inflate">Build outward</option>
+                    <option value="deflate">Push inward</option>
+                    <option value="smooth">Relax sculpt edits</option>
+                  </select>
+                </label>
+                <Range
+                  label="Brush radius (meters)"
+                  min={0.008}
+                  max={0.12}
+                  step={0.002}
+                  value={brush.radius}
+                  onPreview={(v) => setBrush({ ...brush, radius: v })}
+                  onCommit={(v) => setBrush({ ...brush, radius: v })}
+                />
+                <Range
+                  label="Brush strength"
+                  min={0.02}
+                  max={0.5}
+                  step={0.01}
+                  value={brush.strength}
+                  onPreview={(v) => setBrush({ ...brush, strength: v })}
+                  onCommit={(v) => setBrush({ ...brush, strength: v })}
+                />
+                <label className="toggle">
+                  <input
+                    type="checkbox"
+                    checked={brush.symmetry}
+                    onChange={(e) =>
+                      setBrush({ ...brush, symmetry: e.target.checked })
+                    }
+                  />
+                  Mirror across the model's X axis
+                </label>
+                <button
+                  className="primary wide"
+                  disabled={!info.meshes.some((m) => m.sculptable)}
+                  onClick={() => setSculptActive(!sculptActive)}
+                >
+                  {sculptActive ? "Stop sculpting / orbit" : "Start sculpting"}
+                </button>
+                <button
+                  className="wide"
+                  onClick={() => {
+                    change({ sculpt: {} })
+                    setStatus("Sculpt edits reset; original geometry restored.")
+                  }}
+                >
+                  Reset sculpt edits
+                </button>
+                <p className="hint">
+                  Left-drag on the selected visible surface. Stop sculpting to
+                  orbit. Each stroke is one undo step. Motion pauses while
+                  sculpting. Edits are limited to 12 cm from source vertices.
+                </p>
+                <p className="hint">
+                  Local shape editing does not refit clothes, move joints, add
+                  topology, or guarantee every facial expression still deforms
+                  well. Check the face and body in Motion after sculpting.
+                </p>
+                <a
+                  className="button wide"
+                  href="/workbench-reference.html"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Quan reference ↗
+                </a>
+              </>
             )}
             {tab === "Appearance" && (
               <>
@@ -819,6 +986,103 @@ function App() {
                     </a>
                   </div>
                 )}
+                {appearance.hairMeshes.length > 0 && (
+                  <div className="section">
+                    <h3>Hair accents</h3>
+                    <p className="hint">
+                      Select an existing hair section to give it a separate
+                      tint, even when strands share a texture. The base texture
+                      still affects its color.
+                    </p>
+                    <button
+                      className="wide"
+                      disabled={busy}
+                      onClick={() => setAccentPicking(!accentPicking)}
+                    >
+                      {accentPicking
+                        ? "Cancel hair selection"
+                        : "Select hair section on model"}
+                    </button>
+                    {accentPicking && (
+                      <p className="hint">
+                        Click the hair section you want to accent.
+                      </p>
+                    )}
+                    {accentTarget && (
+                      <div className="color-row">
+                        <span>Section {accentTarget.key}</span>
+                        <ColorControl
+                          aria-label="Hair section color"
+                          value={
+                            project.primitiveColors?.[accentTarget.key] ||
+                            project.colors[accentTarget.material] ||
+                            info.materials.find(
+                              (m) => m.index === accentTarget.material,
+                            )?.color ||
+                            "#ffffff"
+                          }
+                          onChange={(e) =>
+                            change({
+                              primitiveColors: {
+                                ...project.primitiveColors,
+                                [accentTarget.key]: e.target.value,
+                              },
+                            })
+                          }
+                        />
+                      </div>
+                    )}
+                    {accentTarget && (
+                      <button
+                        className="text-button"
+                        onClick={() => {
+                          const colors = { ...project.primitiveColors }
+                          delete colors[accentTarget.key]
+                          change({ primitiveColors: colors })
+                        }}
+                      >
+                        Reset selected section
+                      </button>
+                    )}
+                    {Object.keys(project.primitiveColors || {}).length > 0 && (
+                      <button
+                        className="text-button"
+                        onClick={() => change({ primitiveColors: {} })}
+                      >
+                        Reset all hair accents
+                      </button>
+                    )}
+                  </div>
+                )}
+                <details className="section">
+                  <summary>Generate a variation</summary>
+                  <p className="hint">
+                    Reproducible palettes and supported identity shapes. Sculpt
+                    strokes and painted textures stay in your project; colors
+                    tint those textures.
+                  </p>
+                  <label className="field-label">
+                    Variation seed
+                    <input
+                      aria-label="Avatar variation seed"
+                      value={seed}
+                      maxLength={100}
+                      onChange={(e) => setSeed(e.target.value)}
+                    />
+                  </label>
+                  <button
+                    className="wide"
+                    disabled={busy || !appearance.groups.length}
+                    onClick={() => {
+                      change(generateVariation(project, appearance, seed))
+                      setStatus(
+                        "Seeded variation applied. Undo restores your previous character.",
+                      )
+                    }}
+                  >
+                    Generate avatar variation
+                  </button>
+                </details>
                 {appearance.groups.map((group) => (
                   <div className="appearance-group" key={group.id}>
                     <div className="color-row">
@@ -844,6 +1108,28 @@ function App() {
                         }
                       />
                     </div>
+                    {group.indices.map(
+                      (index) =>
+                        info.materials.find((m) => m.index === index)
+                          ?.canTexture && (
+                          <button
+                            key={index}
+                            className="text-button"
+                            disabled={busy}
+                            onClick={() => paintMaterial(index)}
+                          >
+                            Paint{" "}
+                            {group.id === "skin"
+                              ? info.materials
+                                  .find((m) => m.index === index)
+                                  ?.name.includes("Body")
+                                ? "body"
+                                : "face"
+                              : group.id}{" "}
+                            texture
+                          </button>
+                        ),
+                    )}
                     <div
                       className="appearance-swatches"
                       aria-label={`${group.label} palette`}
@@ -1243,6 +1529,12 @@ function App() {
                       <div className="texture-row">
                         <button
                           disabled={busy || !m.canTexture}
+                          onClick={() => paintMaterial(m.index)}
+                        >
+                          Paint texture
+                        </button>
+                        <button
+                          disabled={busy || !m.canTexture}
                           title={
                             m.canTexture
                               ? "Import a painted PNG or JPEG"
@@ -1259,14 +1551,20 @@ function App() {
                         </button>
                         {project.textures?.[m.index] && (
                           <button
-                            title="Restore original texture"
+                            title="Restore original texture and material tone"
                             onClick={() => {
-                              const textures = { ...project.textures }
+                              const textures = { ...project.textures },
+                                colors = { ...project.colors },
+                                paintShadeRatios = {
+                                  ...project.paintShadeRatios,
+                                }
                               delete textures[m.index]
-                              change({ textures })
+                              delete colors[m.index]
+                              delete paintShadeRatios[m.index]
+                              change({ textures, colors, paintShadeRatios })
                             }}
                           >
-                            Reset
+                            Restore source surface
                           </button>
                         )}
                       </div>
@@ -1569,11 +1867,36 @@ function App() {
             )}
           </div>
           <div className="inspector-bottom">
-            <span>WORKBENCH 0.2</span>
+            <span>WORKBENCH 0.3</span>
             <span>LOCAL FIRST</span>
           </div>
         </aside>
       </div>
+      {paintTarget && (
+        <TexturePainter
+          source={paintTarget.source}
+          label={paintTarget.label}
+          onClose={() => setPaintTarget(null)}
+          onApply={(url) => {
+            const entry = {
+              name: "painted-" + paintTarget.label + ".png",
+              mimeType: "image/png",
+              data: url.split(",")[1],
+            }
+            const textures = { ...project.textures, [paintTarget.index]: entry }
+            validateTextures(textures)
+            change({
+              textures,
+              colors: { ...project.colors, [paintTarget.index]: "#ffffff" },
+              paintShadeRatios: {
+                ...project.paintShadeRatios,
+                [paintTarget.index]: paintTarget.shadeRatio,
+              },
+            })
+            setStatus("Painted texture applied. Save the project to keep it.")
+          }}
+        />
+      )}
       <input
         hidden
         type="file"

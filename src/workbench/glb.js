@@ -1,3 +1,5 @@
+import { patchPrimitiveColors } from "./primitive-colors.js"
+import { patchSculpt } from "./geometry.js"
 import {
   MAX_SOURCE_BYTES,
   MAX_OUTPUT_BYTES,
@@ -106,6 +108,7 @@ export function srgbHexToLinear(hex) {
 export function patchGlb(input, project) {
   const document = parseGlb(input)
   const { json } = document
+  patchSculpt(document, project.sculpt)
   const textures = validateTextures(project.textures)
   if (Object.keys(textures).length) {
     const bins = document.chunks.filter((chunk) => chunk.type === BIN_CHUNK)
@@ -168,8 +171,23 @@ export function patchGlb(input, project) {
       const legacy = json.extensions?.VRM?.materialProperties?.[Number(index)]
       if (legacy) {
         legacy.textureProperties ||= {}
+        if (
+          legacy.textureProperties._MainTex !== undefined &&
+          legacy.textureProperties._ShadeTexture ===
+            legacy.textureProperties._MainTex
+        )
+          legacy.textureProperties._ShadeTexture = textureIndex
         legacy.textureProperties._MainTex = textureIndex
       }
+      const mtoon = material.extensions?.VRMC_materials_mtoon
+      if (
+        mtoon?.shadeMultiplyTexture &&
+        mtoon.shadeMultiplyTexture.index === previous.index
+      )
+        mtoon.shadeMultiplyTexture = {
+          ...mtoon.shadeMultiplyTexture,
+          index: textureIndex,
+        }
       parts.push({ offset, data })
       byteLength = offset + data.byteLength
     }
@@ -197,7 +215,12 @@ export function patchGlb(input, project) {
       }
     }
   }
-  for (const [index, color] of Object.entries(project.colors || {})) {
+  const { colorsByNewMaterial, sourceMaterialByNewMaterial } =
+    patchPrimitiveColors(document, project.primitiveColors)
+  for (const [index, color] of Object.entries({
+    ...project.colors,
+    ...colorsByNewMaterial,
+  })) {
     if (!/^(0|[1-9]\d*)$/.test(index)) fail("Invalid material index")
     const material = json.materials?.[Number(index)]
     if (!material) fail(`Material ${index} is absent from source`)
@@ -205,8 +228,12 @@ export function patchGlb(input, project) {
     material.pbrMetallicRoughness ||= {}
     const alpha = material.pbrMetallicRoughness.baseColorFactor?.[3] ?? 1
     material.pbrMetallicRoughness.baseColorFactor = [...rgb, alpha]
+    const ratio = project.paintShadeRatios?.[
+      sourceMaterialByNewMaterial[index] ?? index
+    ] || [0.8, 0.8, 0.8]
+    const shade = rgb.map((value, i) => value * ratio[i])
     const toon = material.extensions?.VRMC_materials_mtoon
-    if (toon) toon.shadeColorFactor = rgb.map((value) => value * 0.8)
+    if (toon) toon.shadeColorFactor = shade
     const legacy = json.extensions?.VRM?.materialProperties?.[Number(index)]
     if (legacy) {
       legacy.vectorProperties ||= {}
@@ -218,7 +245,7 @@ export function patchGlb(input, project) {
         legacy.vectorProperties._Color?.[3] ?? alpha,
       ]
       legacy.vectorProperties._ShadeColor = [
-        ...rgb.map((value) => Math.pow(value * 0.8, 1 / 2.2)),
+        ...shade.map((value) => Math.pow(value, 1 / 2.2)),
         legacy.vectorProperties._ShadeColor?.[3] ?? 1,
       ]
     }

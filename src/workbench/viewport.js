@@ -1,3 +1,12 @@
+import { materialHasExpressionBindings } from "./primitive-colors.js"
+import { parseGlb } from "./glb.js"
+import { collectSculptGeometry } from "./geometry.js"
+import {
+  sculptStroke,
+  applySculptOffsets,
+  recalculateNormals,
+  sculptNeighbors,
+} from "./sculpt.js"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
@@ -14,6 +23,10 @@ export class Viewport {
     this.disposed = false
     this.loadId = 0
     this.expressionPreview = null
+    this.sculptSettings = { enabled: false }
+    this.sculptGeometry = new Map()
+    this.raycaster = new THREE.Raycaster()
+    this.installSculptEvents()
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color("#151d20")
     this.renderer = new THREE.WebGLRenderer({
@@ -82,6 +95,7 @@ export class Viewport {
     this.morphs = []
     this.display.traverse((o) => {
       o.geometry?.dispose()
+      o.userData.accentOriginal?.dispose()
       for (const m of [o.material].flat().filter(Boolean)) {
         for (const v of Object.values(m)) if (v?.isTexture) v.dispose()
         if (m.userData.originalMap && m.userData.originalMap !== m.map)
@@ -102,6 +116,10 @@ export class Viewport {
       return
     }
     this.clear()
+    this.sculptGeometry = collectSculptGeometry(parseGlb(buffer))
+    for (const key of Object.keys(project.sculpt || {}))
+      if (!this.sculptGeometry.has(Number(key)))
+        throw new Error(`Source geometry ${key} does not support sculpt edits`)
     this.gltf = gltf
     this.root = gltf.scene
     this.vrm = gltf.userData.vrm
@@ -129,9 +147,20 @@ export class Viewport {
         o.userData.originalMorphs = [...o.morphTargetInfluences]
       const a = gltf.parser.associations.get(o)
       const mi = a?.meshes
+      const primitive =
+        gltf.parser.json.meshes?.[mi]?.primitives?.[a?.primitives ?? 0]
+      o.userData.workbenchPosition = primitive?.attributes?.POSITION
+      o.userData.workbenchPrimitive = `${mi}:${a?.primitives ?? 0}`
+      const sculptable = this.sculptGeometry.get(o.userData.workbenchPosition)
+      if (sculptable) {
+        o.geometry.attributes.position = o.geometry.attributes.position.clone()
+        if (o.geometry.attributes.normal)
+          o.geometry.attributes.normal = o.geometry.attributes.normal.clone()
+      }
       if (mi !== undefined) {
         meshMap.set(mi, {
           index: mi,
+          sculptable: !!sculptable || !!meshMap.get(mi)?.sculptable,
           name: gltf.parser.json.meshes[mi]?.name || o.name || `Part ${mi + 1}`,
         })
         o.userData.workbenchMesh = mi
@@ -156,9 +185,28 @@ export class Viewport {
           i = a?.materials
         if (i === undefined) continue
         mat.userData.originalMap = mat.map
+        mat.userData.originalShadeMap = mat.shadeMultiplyTexture
+        const rawMaterial = gltf.parser.json.materials[i],
+          rawLegacy =
+            gltf.parser.json.extensions?.VRM?.materialProperties?.[i]
+              ?.textureProperties
+        mat.userData.sharedShadeMap = rawLegacy
+          ? rawLegacy._MainTex !== undefined &&
+            rawLegacy._MainTex === rawLegacy._ShadeTexture
+          : rawMaterial?.pbrMetallicRoughness?.baseColorTexture?.index !==
+              undefined &&
+            rawMaterial.pbrMetallicRoughness.baseColorTexture.index ===
+              rawMaterial.extensions?.VRMC_materials_mtoon?.shadeMultiplyTexture
+                ?.index
         mat.userData.originalColor = mat.color?.clone()
         mat.userData.originalShade = mat.shadeColorFactor?.clone()
         mat.userData.workbenchIndex = i
+        mat.userData.accentSelectable =
+          /_Hair_\d+_HAIR(?:_\d+)?$/i.test(
+            rawMaterial?.extras?.characterStudioSourceName ||
+              rawMaterial?.name ||
+              "",
+          ) && !materialHasExpressionBindings(gltf.parser.json, i)
         const channel = mat.map?.channel || 0,
           uv = channel === 0 ? "uv" : `uv${channel}`
         materialMap.set(i, {
@@ -243,6 +291,7 @@ export class Viewport {
         )
     })
     this.applyColors(true)
+    this.applySculpt(project.sculpt || {})
     this.applyTextures()
     this.applyMorphs(true)
     this.ground()
@@ -251,12 +300,29 @@ export class Viewport {
     if (!this.root || !this.project) return
     this.root.traverse((o) => {
       if (!o.isMesh) return
-      for (const m of [o.material].flat()) {
+      const accent =
+        this.project.primitiveColors?.[o.userData.workbenchPrimitive]
+      if (accent && !o.userData.accentOriginal) {
+        o.userData.accentOriginal = o.material
+        o.material = o.material.clone()
+        o.material.userData = { ...o.userData.accentOriginal.userData }
+      } else if (!accent && o.userData.accentOriginal) {
+        o.material.dispose()
+        o.material = o.userData.accentOriginal
+        delete o.userData.accentOriginal
+      }
+      for (const m of [o.material, o.userData.accentOriginal]
+        .flat()
+        .filter(Boolean)) {
         const i = m.userData.workbenchIndex,
-          c = this.project.colors[i]
+          c = (m === o.material ? accent : null) || this.project.colors[i]
         if (c) {
           m.color?.set(c)
-          m.shadeColorFactor?.set(c).multiplyScalar(0.8)
+          m.shadeColorFactor?.set(c)
+          if (m.shadeColorFactor) {
+            const ratio = this.project.paintShadeRatios?.[i] || [0.8, 0.8, 0.8]
+            m.shadeColorFactor.multiply(new THREE.Color().fromArray(ratio))
+          }
         } else if (reset) {
           if (m.userData.originalColor) m.color?.copy(m.userData.originalColor)
           if (m.userData.originalShade)
@@ -269,7 +335,9 @@ export class Viewport {
     if (!this.root) return
     this.root.traverse((o) => {
       if (!o.isMesh) return
-      for (const m of [o.material].flat()) {
+      for (const m of [o.material, o.userData.accentOriginal]
+        .flat()
+        .filter(Boolean)) {
         const i = m.userData.workbenchIndex,
           entry = this.project.textures?.[i]
         if (entry) {
@@ -299,10 +367,14 @@ export class Viewport {
           }
           if (m.map !== cached.texture) {
             m.map = cached.texture
+            if (m.userData.sharedShadeMap)
+              m.shadeMultiplyTexture = cached.texture
             m.needsUpdate = true
           }
         } else if (m.map !== m.userData.originalMap) {
           m.map = m.userData.originalMap
+          if (m.userData.sharedShadeMap)
+            m.shadeMultiplyTexture = m.userData.originalShadeMap
           m.needsUpdate = true
         }
       }
@@ -377,6 +449,264 @@ export class Viewport {
     this.camera.position.copy(c).add(new THREE.Vector3(...p))
     this.controls.update()
   }
+
+  applySculpt(sculpt = {}) {
+    if (!this.root) return
+    const evaluated = new Map()
+    this.root.traverse((o) => {
+      const id = o.userData.workbenchPosition,
+        g = this.sculptGeometry.get(id)
+      if (!o.isMesh || !g) return
+      let e = evaluated.get(id)
+      if (!e) {
+        const positions = applySculptOffsets(g.positions, sculpt[id] || {})
+        e = {
+          positions,
+          normals: Object.keys(sculpt[id] || {}).length
+            ? recalculateNormals(positions, g.indices, g.normals)
+            : g.normals,
+        }
+        evaluated.set(id, e)
+      }
+      o.geometry.attributes.position.array.set(e.positions)
+      o.geometry.attributes.position.needsUpdate = true
+      if (o.geometry.attributes.normal) {
+        o.geometry.attributes.normal.array.set(e.normals)
+        o.geometry.attributes.normal.needsUpdate = true
+      }
+      o.geometry.computeBoundingSphere()
+      o.geometry.computeBoundingBox()
+      if (o.isSkinnedMesh) {
+        o.computeBoundingBox()
+        o.computeBoundingSphere()
+      }
+    })
+  }
+  setSculptSettings(settings) {
+    this.sculptSettings = settings
+    this.controls.enabled = !settings.enabled
+    this.canvas.style.cursor = settings.enabled ? "crosshair" : ""
+    if (settings.enabled) {
+      this.mixer?.stopAllAction()
+      this.playing = false
+      this.expression("")
+    }
+  }
+  installSculptEvents() {
+    const stamp = (e) => {
+      const rect = this.canvas.getBoundingClientRect(),
+        pointer = new THREE.Vector2(
+          ((e.clientX - rect.left) / rect.width) * 2 - 1,
+          (-(e.clientY - rect.top) / rect.height) * 2 + 1,
+        )
+      this.scene.updateMatrixWorld(true)
+      this.raycaster.setFromCamera(pointer, this.camera)
+      const hit = this.raycaster
+        .intersectObject(this.display, true)
+        .find(
+          (h) =>
+            h.object.isMesh &&
+            h.object.visible &&
+            (this.sculptSettings.meshIndex === undefined ||
+              h.object.userData.workbenchMesh ===
+                this.sculptSettings.meshIndex),
+        )
+      if (!hit?.face) return
+      const mesh = hit.object,
+        id = mesh.userData.workbenchPosition,
+        g = this.sculptGeometry.get(id)
+      if (!g) return
+      // Barycentric pullback from posed hit to original accessor coordinates.
+      // worldToLocal alone is wrong for skinned meshes.
+      const local = mesh.worldToLocal(hit.point.clone()),
+        indices = [hit.face.a, hit.face.b, hit.face.c]
+      const posed = indices.map((i) =>
+        mesh.getVertexPosition(i, new THREE.Vector3()),
+      )
+      const bary = new THREE.Triangle(...posed).getBarycoord(
+        local,
+        new THREE.Vector3(),
+      )
+      if (!bary) return
+      const current = this.strokeSculpt[id] || {},
+        center = [0, 0, 0]
+      indices.forEach((i, j) => {
+        for (let k = 0; k < 3; k++)
+          center[k] +=
+            (g.positions[i * 3 + k] + (current[i]?.[k] || 0)) *
+            bary.getComponent(j)
+      })
+      // Limit each stroke to the touched material so nearby eyes/teeth remain locked.
+      let vertexMask = mesh.userData.sculptMask
+      if (!vertexMask) {
+        vertexMask = new Float32Array(g.positions.length / 3)
+        const materialIndex = mesh.material.userData.workbenchIndex
+        this.root.traverse((part) => {
+          if (
+            !part.isMesh ||
+            part.userData.workbenchPosition !== id ||
+            part.material.userData.workbenchIndex !== materialIndex
+          )
+            return
+          const indices = part.geometry.index?.array
+          if (indices) for (const i of indices) vertexMask[i] = 1
+          else vertexMask.fill(1)
+        })
+        mesh.userData.sculptMask = vertexMask
+      }
+      g.neighbors ||= sculptNeighbors(g.positions.length / 3, g.indices)
+      const settings = this.sculptSettings
+      this.strokeSculpt = {
+        ...this.strokeSculpt,
+        [id]: sculptStroke({
+          ...g,
+          neighbors: g.neighbors,
+          vertexMask,
+          offsets: current,
+          center,
+          radius: settings.radius,
+          strength:
+            settings.mode === "deflate"
+              ? -settings.strength
+              : settings.strength,
+          mode: settings.mode === "deflate" ? "inflate" : settings.mode,
+          symmetry: settings.symmetry,
+          maxDisplacement: 0.12,
+        }),
+      }
+      this.applySculpt(this.strokeSculpt)
+    }
+    const down = (e) => {
+      if (this.accentPicking && e.button === 0) {
+        e.preventDefault()
+        e.stopImmediatePropagation()
+        const rect = this.canvas.getBoundingClientRect()
+        this.scene.updateMatrixWorld(true)
+        this.raycaster.setFromCamera(
+          new THREE.Vector2(
+            ((e.clientX - rect.left) / rect.width) * 2 - 1,
+            (-(e.clientY - rect.top) / rect.height) * 2 + 1,
+          ),
+          this.camera,
+        )
+        const hit = this.raycaster
+          .intersectObject(this.display, true)
+          .find(
+            (h) =>
+              h.object.isMesh &&
+              h.object.visible &&
+              h.object.material?.userData.accentSelectable,
+          )
+        if (hit)
+          this.onAccentPick?.({
+            key: hit.object.userData.workbenchPrimitive,
+            material: hit.object.material.userData.workbenchIndex,
+          })
+        return
+      }
+      if (!this.sculptSettings.enabled || e.button !== 0) return
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      this.strokeSculpt = { ...(this.project.sculpt || {}) }
+      this.sculptPointer = e.pointerId
+      this.canvas.setPointerCapture(e.pointerId)
+      this.lastSculptPoint = [e.clientX, e.clientY]
+      try {
+        stamp(e)
+      } catch (error) {
+        this.onSculptError?.(error)
+      }
+    }
+    const move = (e) => {
+      if (this.sculptPointer !== e.pointerId) return
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      if (
+        Math.hypot(
+          e.clientX - this.lastSculptPoint[0],
+          e.clientY - this.lastSculptPoint[1],
+        ) < 5
+      )
+        return
+      this.lastSculptPoint = [e.clientX, e.clientY]
+      try {
+        stamp(e)
+      } catch (error) {
+        this.onSculptError?.(error)
+      }
+    }
+    const up = (e) => {
+      if (this.sculptPointer !== e.pointerId) return
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      this.sculptPointer = null
+      if (this.canvas.hasPointerCapture(e.pointerId))
+        this.canvas.releasePointerCapture(e.pointerId)
+      this.onSculptCommit?.(this.strokeSculpt)
+    }
+    const cancel = (e) => {
+      if (this.sculptPointer !== e.pointerId) return
+      this.sculptPointer = null
+      this.applySculpt(this.project.sculpt || {})
+    }
+    this.canvas.addEventListener("pointerdown", down, true)
+    this.canvas.addEventListener("pointermove", move, true)
+    this.canvas.addEventListener("pointerup", up, true)
+    this.canvas.addEventListener("pointercancel", cancel, true)
+    this.removeSculptEvents = () => {
+      this.canvas.removeEventListener("pointerdown", down, true)
+      this.canvas.removeEventListener("pointermove", move, true)
+      this.canvas.removeEventListener("pointerup", up, true)
+      this.canvas.removeEventListener("pointercancel", cancel, true)
+    }
+  }
+  textureShadeRatio(materialIndex) {
+    let material
+    this.root?.traverse((o) => {
+      for (const m of [o.material].flat().filter(Boolean))
+        if (m.userData.workbenchIndex === materialIndex)
+          material = o.userData.accentOriginal || m
+    })
+    const base = material?.color?.toArray() || [1, 1, 1],
+      shade = material?.shadeColorFactor?.toArray() || [0.8, 0.8, 0.8]
+    return base.map((v, i) =>
+      v > 1e-8 ? Math.min(1, Math.max(0, shade[i] / v)) : 0.8,
+    )
+  }
+  textureImage(materialIndex) {
+    let found
+    this.root?.traverse((o) => {
+      for (const m of [o.material].flat().filter(Boolean))
+        if (m.userData.workbenchIndex === materialIndex)
+          found = o.userData.accentOriginal || m
+    })
+    const image = found?.map?.image
+    const canvas = document.createElement("canvas")
+    canvas.width = Math.min(image?.width || 1024, 2048)
+    canvas.height = Math.min(image?.height || 1024, 2048)
+    const ctx = canvas.getContext("2d")
+    if (image) ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+    else {
+      ctx.fillStyle = "#ffffff"
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    }
+    // Bake the displayed base-color multiplier before the painter takes ownership.
+    // Texture pixels are sRGB; material factors are linear (do not multiply byte values).
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height),
+      factor = found?.color?.toArray() || [1, 1, 1]
+    const linear = (v) =>
+      v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4
+    const srgb = (v) =>
+      v <= 0.0031308 ? v * 12.92 : 1.055 * v ** (1 / 2.4) - 0.055
+    for (let i = 0; i < pixels.data.length; i += 4)
+      for (let c = 0; c < 3; c++)
+        pixels.data[i + c] = Math.round(
+          255 * srgb(linear(pixels.data[i + c] / 255) * factor[c]),
+        )
+    ctx.putImageData(pixels, 0, 0)
+    return canvas.toDataURL("image/png")
+  }
+
   animate(index) {
     this.mixer?.stopAllAction()
     if (this.mixer && this.animations[index]) {
@@ -398,6 +728,7 @@ export class Viewport {
     this.disposed = true
     cancelAnimationFrame(this.frame)
     this.resize.disconnect()
+    this.removeSculptEvents?.()
     this.controls.dispose()
     this.clear()
     this.grid.geometry.dispose()

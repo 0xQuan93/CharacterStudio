@@ -1190,3 +1190,9 @@ i {
     height: 18px;
   }
 }
+
+/* Keep adjacent per-material painter actions readable in the narrow inspector. */
+.appearance-group > .text-button {
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}

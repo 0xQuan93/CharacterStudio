@@ -1,0 +1,1239 @@
+{
+  "checkedAt": "2026-09-17",
+  "repository": "https://github.com/makehumancommunity/mpfb2",
+  "commit": "817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5",
+  "license": "CC0-1.0 for assets; source code not copied",
+  "status": "Source authoring pack; not yet converted to VRM or integrated with runtime morphology",
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "bytes": 3188,
+      "sha256": "5cefb60680cb9efd4550a2e65d719021cfbec9dad3658481d11d48ae863ce04d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/LICENSE.md"
+    },
+    {
+      "path": "LICENSE.ASSETS.md",
+      "bytes": 6962,
+      "sha256": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/LICENSE.ASSETS.md"
+    },
+    {
+      "path": "src/mpfb/data/3dobjs/base.obj",
+      "bytes": 1749303,
+      "sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/3dobjs/base.obj"
+    },
+    {
+      "path": "src/mpfb/data/rigs/standard/rig.game_engine.json",
+      "bytes": 40936,
+      "sha256": "b324ddb4b707721c19630bfadb87c3e3b38eed3b6e4590bb3cead43ea918f799",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/rigs/standard/rig.game_engine.json"
+    },
+    {
+      "path": "src/mpfb/data/rigs/standard/weights.game_engine.json",
+      "bytes": 3026778,
+      "sha256": "9f4a773e74ce5ba08415b4f30070338e9f75bae5971b5075b10cd6b9caa58473",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/rigs/standard/weights.game_engine.json"
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-bones-decr.target.gz",
+      "bytes": 492,
+      "sha256": "109d88ec6394cb3455073ae9f2a6038b8b4d6b57feeaf4633611bc60f27ed212",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-bones-decr.target.gz",
+      "affectedVertices": 91,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-bones-incr.target.gz",
+      "bytes": 305,
+      "sha256": "ea5aa60abcc2926e61cdabf5d40701c2b23b3f8027f949cea0b80bcbc55df301",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-bones-incr.target.gz",
+      "affectedVertices": 63,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-inner-decr.target.gz",
+      "bytes": 290,
+      "sha256": "2ae02220b2f5d94bdc0a8295211b3b3872bbc636d7e9f7ec5d121fd80a470196",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-inner-decr.target.gz",
+      "affectedVertices": 53,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-inner-incr.target.gz",
+      "bytes": 582,
+      "sha256": "aa88894b5e89617c98c8738ffa61aab79f450a5420570d4c2ee8e97ae6a70c3e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-inner-incr.target.gz",
+      "affectedVertices": 101,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-trans-down.target.gz",
+      "bytes": 769,
+      "sha256": "3da1a241d0599719329e9e3154b4028bfaf173cc6945005fa0e0f1841da37643",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-trans-down.target.gz",
+      "affectedVertices": 199,
+      "largestVertexIndex": 13372
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-trans-up.target.gz",
+      "bytes": 483,
+      "sha256": "d5a1b1a2aa277717077837ad430a0fc0b5081a002359cb316ada43782e428f82",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-trans-up.target.gz",
+      "affectedVertices": 93,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-volume-decr.target.gz",
+      "bytes": 787,
+      "sha256": "202ff036e39abea154e0896ad34641184c5e8b77610dca9e1e8e4ce4a5db1bc4",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-volume-decr.target.gz",
+      "affectedVertices": 194,
+      "largestVertexIndex": 11942
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/l-cheek-volume-incr.target.gz",
+      "bytes": 1274,
+      "sha256": "75bf330b96d0036c46f779ed003782c7380c77dd06c14fd80f1fa20a5093fee1",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/l-cheek-volume-incr.target.gz",
+      "affectedVertices": 229,
+      "largestVertexIndex": 11944
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-bones-decr.target.gz",
+      "bytes": 483,
+      "sha256": "f128fdcf1d91769a907dc2c74056edac427196c1900f875c34c03b01dee5b7af",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-bones-decr.target.gz",
+      "affectedVertices": 91,
+      "largestVertexIndex": 5333
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-bones-incr.target.gz",
+      "bytes": 310,
+      "sha256": "c608528b9e5e1c670179cfb502dab3d9478a77bb942f7c8186cd072a7369e9b9",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-bones-incr.target.gz",
+      "affectedVertices": 63,
+      "largestVertexIndex": 5333
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-inner-decr.target.gz",
+      "bytes": 241,
+      "sha256": "4878a5ba766a4de2347bb7506e46a53936ede0a2d52cbbb6fee8cb58dac92dec",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-inner-decr.target.gz",
+      "affectedVertices": 41,
+      "largestVertexIndex": 5333
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-inner-incr.target.gz",
+      "bytes": 748,
+      "sha256": "db0700f0785acc72c2c91665d8ae9502b959e28c60e8fbd1d4b1a2bc94d11199",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-inner-incr.target.gz",
+      "affectedVertices": 160,
+      "largestVertexIndex": 14276
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-trans-down.target.gz",
+      "bytes": 758,
+      "sha256": "f321b6fb273141f809916bbedd4c9cfb2e081725ba59f3c480ca14734d02d36c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-trans-down.target.gz",
+      "affectedVertices": 199,
+      "largestVertexIndex": 6776
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-trans-up.target.gz",
+      "bytes": 471,
+      "sha256": "b355fbef52aa458e392b0cd8f16638d157fa7194a549ad9f5bf4fa61f426e37d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-trans-up.target.gz",
+      "affectedVertices": 93,
+      "largestVertexIndex": 5333
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-volume-decr.target.gz",
+      "bytes": 765,
+      "sha256": "ea12455c7a85e7b3b5e6e4882b4b68823a00bcaef4ea048cc49be452a139c1bc",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-volume-decr.target.gz",
+      "affectedVertices": 194,
+      "largestVertexIndex": 5339
+    },
+    {
+      "path": "src/mpfb/data/targets/cheek/r-cheek-volume-incr.target.gz",
+      "bytes": 1288,
+      "sha256": "4df3e61e843c2d3381ef534e90d347b6b8ea763428d69eba8ef2ed5ab0affb8c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/cheek/r-cheek-volume-incr.target.gz",
+      "affectedVertices": 229,
+      "largestVertexIndex": 5341
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-bones-decr.target.gz",
+      "bytes": 32837,
+      "sha256": "88613903c211706f31de1868318bfb88d51bd23791a11e1a4488266a88083396",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-bones-decr.target.gz",
+      "affectedVertices": 13209,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-bones-incr.target.gz",
+      "bytes": 3341,
+      "sha256": "72c76aeb7956fb083aaf0d5efa00b2cdfa0f328eefc01d5e28f4610719de50c3",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-bones-incr.target.gz",
+      "affectedVertices": 805,
+      "largestVertexIndex": 12367
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-cleft-decr.target.gz",
+      "bytes": 192,
+      "sha256": "57a4517afa3855450dad512999b9c56c0b3a2aac49d6a37af10bfcec3da231e5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-cleft-decr.target.gz",
+      "affectedVertices": 21,
+      "largestVertexIndex": 11831
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-cleft-incr.target.gz",
+      "bytes": 269,
+      "sha256": "223f3f1f56ec2b441f3aa637f0d088bdb3570fe13c1778cdfc514868a15b555a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-cleft-incr.target.gz",
+      "affectedVertices": 50,
+      "largestVertexIndex": 11900
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-height-decr.target.gz",
+      "bytes": 1136,
+      "sha256": "1f4196d330b418d576e9400a754cb99d7e60b069ee8fdef645713f84db984e0c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-height-decr.target.gz",
+      "affectedVertices": 279,
+      "largestVertexIndex": 14549
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-height-incr.target.gz",
+      "bytes": 2004,
+      "sha256": "4f05b61b39266801b0a333c208d274ff109250fe9e4512c486a455806878e15c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-height-incr.target.gz",
+      "affectedVertices": 561,
+      "largestVertexIndex": 14589
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-jaw-drop-decr.target.gz",
+      "bytes": 374,
+      "sha256": "9176198f2ddcbb48d21d26b5c61e646bb656c6fc96508d4406272efa2aeab40c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-jaw-drop-decr.target.gz",
+      "affectedVertices": 60,
+      "largestVertexIndex": 11902
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-jaw-drop-incr.target.gz",
+      "bytes": 288,
+      "sha256": "b750b941a75badd7281db378356438dd8647ef043e3470f9e34bbf873e711e71",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-jaw-drop-incr.target.gz",
+      "affectedVertices": 46,
+      "largestVertexIndex": 11901
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-prognathism-decr.target.gz",
+      "bytes": 1707,
+      "sha256": "1eb94c408292e35d27ef1547733908df5c59cf046ad5901ab9387a65e73e4225",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-prognathism-decr.target.gz",
+      "affectedVertices": 485,
+      "largestVertexIndex": 15119
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-prognathism-incr.target.gz",
+      "bytes": 1118,
+      "sha256": "d5453730848d4d3ad12680532c1e1d649194de652eba115fa733e2fb784167e3",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-prognathism-incr.target.gz",
+      "affectedVertices": 359,
+      "largestVertexIndex": 15119
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-prominent-decr.target.gz",
+      "bytes": 805,
+      "sha256": "4ed14cb51e7ea7b3ecd469a537733924353c683f3cfe545be182d18a220dcb4e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-prominent-decr.target.gz",
+      "affectedVertices": 199,
+      "largestVertexIndex": 15046
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-prominent-incr.target.gz",
+      "bytes": 565,
+      "sha256": "e0d5ec5e213b88719def0f43ddaa7107796fc02f7447e2b2f140d9fe513a6ac8",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-prominent-incr.target.gz",
+      "affectedVertices": 129,
+      "largestVertexIndex": 14549
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-triangle.target.gz",
+      "bytes": 1657,
+      "sha256": "284db04ac8024df839240b91d9bec56db3f96be41e188baef50974670746ff02",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-triangle.target.gz",
+      "affectedVertices": 432,
+      "largestVertexIndex": 14549
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-width-decr.target.gz",
+      "bytes": 768,
+      "sha256": "6c3aaca074630e89951184130a4a158b6f62c9d0cf57cf8eb828c445ff40c21a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-width-decr.target.gz",
+      "affectedVertices": 179,
+      "largestVertexIndex": 11939
+    },
+    {
+      "path": "src/mpfb/data/targets/chin/chin-width-incr.target.gz",
+      "bytes": 1110,
+      "sha256": "68764b6ec7c923597beaaf643f71c41f00c93639d9bb522c169c279db2ad299e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/chin/chin-width-incr.target.gz",
+      "affectedVertices": 266,
+      "largestVertexIndex": 11941
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-angle-down.target.gz",
+      "bytes": 2200,
+      "sha256": "2c45c5f65406f0e987c586b03d5c07953d375fa19b38ffc7775edc160a7596df",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-angle-down.target.gz",
+      "affectedVertices": 554,
+      "largestVertexIndex": 13377
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-angle-up.target.gz",
+      "bytes": 1433,
+      "sha256": "87bcf04d2bc5aad60d5a403c00eda5ec567141fc38fe6a19f8c65994ba7633b5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-angle-up.target.gz",
+      "affectedVertices": 314,
+      "largestVertexIndex": 13377
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-trans-backward.target.gz",
+      "bytes": 867,
+      "sha256": "afb3800c65cc2a2159091fbf44cd758e003fa73a4c9b9bd3a6c6b9c09527a058",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-trans-backward.target.gz",
+      "affectedVertices": 202,
+      "largestVertexIndex": 11924
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-trans-down.target.gz",
+      "bytes": 1574,
+      "sha256": "9f5bbb848e40d3a320492dd08ef8d1a926b50c7fd1ca279cf8f573e0f0cdd589",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-trans-down.target.gz",
+      "affectedVertices": 422,
+      "largestVertexIndex": 13377
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-trans-forward.target.gz",
+      "bytes": 1549,
+      "sha256": "7bc54f886d3c2776829e47a7ed8b26d1e730ee473424fde7f3ff35137990f949",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-trans-forward.target.gz",
+      "affectedVertices": 370,
+      "largestVertexIndex": 18964
+    },
+    {
+      "path": "src/mpfb/data/targets/eyebrows/eyebrows-trans-up.target.gz",
+      "bytes": 1961,
+      "sha256": "fdaf3fb2ee5d1790202ede605d097e7666567237f1ab62a90729f72df0c16c52",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/eyebrows/eyebrows-trans-up.target.gz",
+      "affectedVertices": 529,
+      "largestVertexIndex": 13359
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-age-decr.target.gz",
+      "bytes": 18011,
+      "sha256": "9952127abdd162c8d5a3cee5d368fa0bbdc6aab21fec799e9e8be84aa2351472",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-age-decr.target.gz",
+      "affectedVertices": 4246,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-age-incr.target.gz",
+      "bytes": 13932,
+      "sha256": "ea5b7b9404daa1f6b8ea14a11a0e8ae6a082e98d0d65f63cc2150057a168e396",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-age-incr.target.gz",
+      "affectedVertices": 3195,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-angle-in.target.gz",
+      "bytes": 18710,
+      "sha256": "ecd14c95ab3ccf5a2d34ac8eaf63cae32eb3b06299b7058d8d71d6d8a8bda4de",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-angle-in.target.gz",
+      "affectedVertices": 3852,
+      "largestVertexIndex": 19057
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-angle-out.target.gz",
+      "bytes": 20822,
+      "sha256": "69145fb76b5818580266e956b34282589bfea606b67a6d5444f4cf5a689ded81",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-angle-out.target.gz",
+      "affectedVertices": 4068,
+      "largestVertexIndex": 18971
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-back-scale-depth-decr.target.gz",
+      "bytes": 2119,
+      "sha256": "86a1c69526aae30b4c307366d9e13157f9f2d5541b18205fbef2072b2bbf5470",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-back-scale-depth-decr.target.gz",
+      "affectedVertices": 502,
+      "largestVertexIndex": 19135
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-back-scale-depth-incr.target.gz",
+      "bytes": 2052,
+      "sha256": "2d37e5cc84c8431a98e1ff4ce66d725207b303aaacb0c97f52f3721ec234d0dd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-back-scale-depth-incr.target.gz",
+      "affectedVertices": 498,
+      "largestVertexIndex": 19132
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-diamond.target.gz",
+      "bytes": 3368,
+      "sha256": "758e9bfce5b08be49725ddb16cad426db4475d30619ca5c41a7f18a87c808a61",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-diamond.target.gz",
+      "affectedVertices": 679,
+      "largestVertexIndex": 19127
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-fat-decr.target.gz",
+      "bytes": 3988,
+      "sha256": "6ef17a5ba87b23aa11746ac8c539fef70be5a8f89cae4abb2c2f3f32a9c6cc57",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-fat-decr.target.gz",
+      "affectedVertices": 794,
+      "largestVertexIndex": 12162
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-fat-incr.target.gz",
+      "bytes": 4039,
+      "sha256": "28494dfd84ee8677000ef0a8d8e3b38dff0674d16c54103997b7bbe0de943a1a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-fat-incr.target.gz",
+      "affectedVertices": 742,
+      "largestVertexIndex": 12162
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-invertedtriangular.target.gz",
+      "bytes": 7881,
+      "sha256": "70ba80d2c8da216be56c6edaaa8386d5390aa92094859bf83096fb3acb33f12a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-invertedtriangular.target.gz",
+      "affectedVertices": 2005,
+      "largestVertexIndex": 19064
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-oval.target.gz",
+      "bytes": 9625,
+      "sha256": "057eea7c5535c325493b9107228052b03c78fac1bcb24905313fae6351179cb8",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-oval.target.gz",
+      "affectedVertices": 2143,
+      "largestVertexIndex": 19131
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-rectangular.target.gz",
+      "bytes": 2936,
+      "sha256": "a4ff15dbcda4164e823c7a6f00c234cc62cb136b1c568198c7980bf9f2d358f2",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-rectangular.target.gz",
+      "affectedVertices": 585,
+      "largestVertexIndex": 19028
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-round.target.gz",
+      "bytes": 8351,
+      "sha256": "9c5661568155231f4c5f13b0d332c09b0c27452cafc02f5685ff4d7c69010f50",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-round.target.gz",
+      "affectedVertices": 1974,
+      "largestVertexIndex": 19133
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-depth-decr.target.gz",
+      "bytes": 14718,
+      "sha256": "2bc2c4906b12000800c10e938bcab102814a33c2db0fbe021b3bba1be4c356bf",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-depth-decr.target.gz",
+      "affectedVertices": 4673,
+      "largestVertexIndex": 19133
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-depth-incr.target.gz",
+      "bytes": 14650,
+      "sha256": "2e7eb5bf8cf73c780ff66610cb15d97a2496c5c2855612bbf6c6f8fcf36c7ddd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-depth-incr.target.gz",
+      "affectedVertices": 4709,
+      "largestVertexIndex": 19131
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-horiz-decr.target.gz",
+      "bytes": 21427,
+      "sha256": "ddec139b27d1f9b7a90f6474450c56897a4e417334af083e87e988fdf94ca343",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-horiz-decr.target.gz",
+      "affectedVertices": 5210,
+      "largestVertexIndex": 19128
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-horiz-incr.target.gz",
+      "bytes": 21695,
+      "sha256": "671542640aec14d1740c1263deb0e274f3044edec761e6d4171329f0419be084",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-horiz-incr.target.gz",
+      "affectedVertices": 5240,
+      "largestVertexIndex": 19128
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-vert-decr.target.gz",
+      "bytes": 19252,
+      "sha256": "64e86d59a469eeeb0201026880bcd6ebb0cbd590a74b179f58efa879b3772f6c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-vert-decr.target.gz",
+      "affectedVertices": 5299,
+      "largestVertexIndex": 19131
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-scale-vert-incr.target.gz",
+      "bytes": 19171,
+      "sha256": "be8b270ec67817578128396433d6e8ab9d530c9d81ea21db92cd1b9627a8110b",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-scale-vert-incr.target.gz",
+      "affectedVertices": 5303,
+      "largestVertexIndex": 19125
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-square.target.gz",
+      "bytes": 3350,
+      "sha256": "94b484ae145970e5368706d4f42711f50e18fcbf7d9f1ee800572c3fa69f855a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-square.target.gz",
+      "affectedVertices": 693,
+      "largestVertexIndex": 19125
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-backward.target.gz",
+      "bytes": 15267,
+      "sha256": "f295b73314ecd709456167226ab4ebc4da4e8ee4688b091e4de56dadc42dfbd5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-backward.target.gz",
+      "affectedVertices": 5498,
+      "largestVertexIndex": 19135
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-down.target.gz",
+      "bytes": 16262,
+      "sha256": "99a62012abdd2709ebaa2a5846eda2dba8fc8329ef71b6fde2cb971ac83dcba1",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-down.target.gz",
+      "affectedVertices": 5566,
+      "largestVertexIndex": 19139
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-forward.target.gz",
+      "bytes": 15272,
+      "sha256": "a523a246ebb6f353e6a7602dde185dc5ed8add2af9f0f32e5580ce6f1f21dd89",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-forward.target.gz",
+      "affectedVertices": 5518,
+      "largestVertexIndex": 19137
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-in.target.gz",
+      "bytes": 15316,
+      "sha256": "d65dcd31356c18fc505116a02db3c9b17c6c6451403952cd5bb601de2d51445e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-in.target.gz",
+      "affectedVertices": 5518,
+      "largestVertexIndex": 19137
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-out.target.gz",
+      "bytes": 15181,
+      "sha256": "6c62af4cbe60a3242426554f2d3d79cb77112f6b62bb2597cf2c03cb35afacfc",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-out.target.gz",
+      "affectedVertices": 5518,
+      "largestVertexIndex": 19137
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-trans-up.target.gz",
+      "bytes": 15038,
+      "sha256": "a6bb16b9b972514f900ebb9804e5b983ce3e1a5ace5660d8359e8485b31dda91",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-trans-up.target.gz",
+      "affectedVertices": 5542,
+      "largestVertexIndex": 19137
+    },
+    {
+      "path": "src/mpfb/data/targets/head/head-triangular.target.gz",
+      "bytes": 3498,
+      "sha256": "4fed43891a15d76507b8062e69ebf8482438ecbf281e3f6f9876407ea98ee308",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/head/head-triangular.target.gz",
+      "affectedVertices": 729,
+      "largestVertexIndex": 19124
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-angles-down.target.gz",
+      "bytes": 1796,
+      "sha256": "5c760f5bd32c6f7a0c3298840dcad2bc4a20eaf5dd167a7a548553d5c0e1f5d5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-angles-down.target.gz",
+      "affectedVertices": 508,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-angles-up.target.gz",
+      "bytes": 1529,
+      "sha256": "81fb84776356e4f1f1f99bd6f7d16707f385568ed585df4d1826de8ff76e778f",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-angles-up.target.gz",
+      "affectedVertices": 428,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-cupidsbow-decr.target.gz",
+      "bytes": 253,
+      "sha256": "69de11f939c169eb8d779332779039c88f12eddf2b617eb7470fa84f9ad2fd7e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-cupidsbow-decr.target.gz",
+      "affectedVertices": 49,
+      "largestVertexIndex": 11948
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-cupidsbow-incr.target.gz",
+      "bytes": 483,
+      "sha256": "b8d7bfcdb811d56ab47d5a0c87c5de083695670a59126bb3e792cb8a0d760813",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-cupidsbow-incr.target.gz",
+      "affectedVertices": 89,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-cupidsbow-width-decr.target.gz",
+      "bytes": 481,
+      "sha256": "a74e37cd9e5b64cb06fcd770508fc44d37f3407f712a77c664b2065ea1421e18",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-cupidsbow-width-decr.target.gz",
+      "affectedVertices": 108,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-cupidsbow-width-incr.target.gz",
+      "bytes": 482,
+      "sha256": "8c5021454c49d5426c60f0e9dbd9cc8a3309cb83de287d9117f9aa34422191ad",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-cupidsbow-width-incr.target.gz",
+      "affectedVertices": 104,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-dimples-in.target.gz",
+      "bytes": 206,
+      "sha256": "34dfeac497331292d5895c03863459c6b07a7bc34c1aee14088aac7767585479",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-dimples-in.target.gz",
+      "affectedVertices": 24,
+      "largestVertexIndex": 11866
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-dimples-out.target.gz",
+      "bytes": 316,
+      "sha256": "2b924409c3e2ccac947f36b8d61f53be5f18a3846b3ad874d0fdc40e00a199dc",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-dimples-out.target.gz",
+      "affectedVertices": 48,
+      "largestVertexIndex": 11905
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-laugh-lines-in.target.gz",
+      "bytes": 334,
+      "sha256": "2151f7c8dc19be3b8ac015a06b312edc657ebe92f6df6870555c43cf729b3c7f",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-laugh-lines-in.target.gz",
+      "affectedVertices": 50,
+      "largestVertexIndex": 11936
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-laugh-lines-out.target.gz",
+      "bytes": 387,
+      "sha256": "f37954bccb4d39c3e6c6054d91e88326c66cc274e262cc3001ba124588de7b96",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-laugh-lines-out.target.gz",
+      "affectedVertices": 60,
+      "largestVertexIndex": 11937
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-ext-down.target.gz",
+      "bytes": 319,
+      "sha256": "699f92339739da02492177fb18bd664969b491d556e5816167d3b4b7700cd11c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-ext-down.target.gz",
+      "affectedVertices": 55,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-ext-up.target.gz",
+      "bytes": 400,
+      "sha256": "d43f4bd02628f543ce880af9c1166671cd580cad3be42e6cfa826d528570d111",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-ext-up.target.gz",
+      "affectedVertices": 88,
+      "largestVertexIndex": 11941
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-height-decr.target.gz",
+      "bytes": 507,
+      "sha256": "34a975ddaee05a6ea08d508e1c41099db97df400b58ed970f9ff57b186231bb5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-height-decr.target.gz",
+      "affectedVertices": 121,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-height-incr.target.gz",
+      "bytes": 367,
+      "sha256": "13f667854a83f0c3a4481ec266bbe4d5f1dba6a403c884c1b6b44606cb41f513",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-height-incr.target.gz",
+      "affectedVertices": 77,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-middle-down.target.gz",
+      "bytes": 269,
+      "sha256": "9e366f7cf297365a36ed3b465761de8b3d1380b40d79454800c871cb2dba191c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-middle-down.target.gz",
+      "affectedVertices": 45,
+      "largestVertexIndex": 7309
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-middle-up.target.gz",
+      "bytes": 288,
+      "sha256": "3af85468bdd098424b04b1fddb5444b8c5eb598a1f440ebe55f99449ee4e0dc9",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-middle-up.target.gz",
+      "affectedVertices": 53,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-volume-decr.target.gz",
+      "bytes": 391,
+      "sha256": "01d4f0c2889b43d3b97e4c7c6179d1217214a7caa0073db36d09b2b4b6edcf18",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-volume-decr.target.gz",
+      "affectedVertices": 72,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-volume-incr.target.gz",
+      "bytes": 896,
+      "sha256": "6eefdf010318ac86aa59aeefffdf1f7e566f280a04e9843003b0543b4dc99179",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-volume-incr.target.gz",
+      "affectedVertices": 187,
+      "largestVertexIndex": 11942
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-width-decr.target.gz",
+      "bytes": 492,
+      "sha256": "da63edfc45b55451e4d9d6d69ff2e3287d011b5a2f60f25cd9483a6ebc265092",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-width-decr.target.gz",
+      "affectedVertices": 110,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-lowerlip-width-incr.target.gz",
+      "bytes": 611,
+      "sha256": "d9089437f196725eee9331f8e37cfb943de1662fbe458b06f63cc13a0b688811",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-lowerlip-width-incr.target.gz",
+      "affectedVertices": 154,
+      "largestVertexIndex": 11940
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-philtrum-volume-decr.target.gz",
+      "bytes": 207,
+      "sha256": "0a5f8f760c824d1998c26f56607be61a19a8b5e2d72ecced7e175d8ac2a7249f",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-philtrum-volume-decr.target.gz",
+      "affectedVertices": 31,
+      "largestVertexIndex": 11947
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-philtrum-volume-incr.target.gz",
+      "bytes": 154,
+      "sha256": "17c101012d90e60e1e58a942589d2c40bd9b6d92e19b08be9dc961353992c8ef",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-philtrum-volume-incr.target.gz",
+      "affectedVertices": 17,
+      "largestVertexIndex": 11946
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-depth-decr.target.gz",
+      "bytes": 1784,
+      "sha256": "ab2943ece483d3472360e08ce025c05a45e210b7a5c05d205c8445746deb9a0a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-depth-decr.target.gz",
+      "affectedVertices": 494,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-depth-incr.target.gz",
+      "bytes": 1702,
+      "sha256": "94f7be59e2a999c4be0f8d88d73664ae86db95b9e149510e39aa630dade3499d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-depth-incr.target.gz",
+      "affectedVertices": 490,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-horiz-decr.target.gz",
+      "bytes": 3038,
+      "sha256": "aed1a3c27224d12828de1ffc3fe9c2895f4389417d016016dd4f1fefccdbc6c9",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-horiz-decr.target.gz",
+      "affectedVertices": 838,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-horiz-incr.target.gz",
+      "bytes": 3925,
+      "sha256": "3bd6ff8195f77f0bcb586f3efec0eea1ae615eecba516e4d121025e40ed0ead2",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-horiz-incr.target.gz",
+      "affectedVertices": 1004,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-vert-decr.target.gz",
+      "bytes": 1758,
+      "sha256": "0b1fdda3c01093fadefcb0f12da363ede8a90fb5aaa5791088b732802031fc4d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-vert-decr.target.gz",
+      "affectedVertices": 500,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-scale-vert-incr.target.gz",
+      "bytes": 3128,
+      "sha256": "b7dc2db32e60a0cf01d7ae6b64ba812a7a508b49d1ef4704933887eb880d4ee9",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-scale-vert-incr.target.gz",
+      "affectedVertices": 891,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-backward.target.gz",
+      "bytes": 3540,
+      "sha256": "2dab6b7ec52c47ee09c7eed0a469e55e1cbcad254a877de10e7d6d2feb17be47",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-backward.target.gz",
+      "affectedVertices": 1149,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-down.target.gz",
+      "bytes": 3391,
+      "sha256": "3f8810e0cc8d97c1dcdc5d28efedd2f9cff3ca1faa8a9c5f1661f5fc70f24f49",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-down.target.gz",
+      "affectedVertices": 1076,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-forward.target.gz",
+      "bytes": 3622,
+      "sha256": "d9ff6e5d30bea3b7fdd20a47f2d39a97c635462dcb15b8a6609249234195ecb7",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-forward.target.gz",
+      "affectedVertices": 1104,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-in.target.gz",
+      "bytes": 3606,
+      "sha256": "fcac26e7e3facfcd636f306539bfa7c47635b0d688fb5ece80378c721ab91d6c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-in.target.gz",
+      "affectedVertices": 1077,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-out.target.gz",
+      "bytes": 3968,
+      "sha256": "1996dc86997daf379768125f51d4bb75b5ab54fd4673155700f7c6b7bb583405",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-out.target.gz",
+      "affectedVertices": 1180,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-trans-up.target.gz",
+      "bytes": 2981,
+      "sha256": "9b67400e12688a236a88319ce8fa10b1668def63f0fa3cba0e7279cfaaae56c9",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-trans-up.target.gz",
+      "affectedVertices": 978,
+      "largestVertexIndex": 15127
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-ext-down.target.gz",
+      "bytes": 659,
+      "sha256": "01f9b280ce36b78804fc8ed70643513ec9a05b8cb22548378054aae37ddcb0db",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-ext-down.target.gz",
+      "affectedVertices": 152,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-ext-up.target.gz",
+      "bytes": 399,
+      "sha256": "33f822cdf57e6bc63f36d592011b2a70386e90898ec412eb3808f93f69868ad1",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-ext-up.target.gz",
+      "affectedVertices": 82,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-height-decr.target.gz",
+      "bytes": 870,
+      "sha256": "4fc144cee0d3fe91d69fc4192903e17f108eab99950685815be1ebb52ab69bbc",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-height-decr.target.gz",
+      "affectedVertices": 205,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-height-incr.target.gz",
+      "bytes": 1036,
+      "sha256": "4c221c1f99e6f7c253cea0b2a3bc29d44751932928693006b352fc7ece95f6d6",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-height-incr.target.gz",
+      "affectedVertices": 263,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-middle-down.target.gz",
+      "bytes": 526,
+      "sha256": "769782ce9aa46300980866f13641a479526549066ad82cb1d6595241f83afee3",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-middle-down.target.gz",
+      "affectedVertices": 119,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-middle-up.target.gz",
+      "bytes": 503,
+      "sha256": "b68b79808d10934db641649251b15ce18553bbcfd8c3d9f2e2cd6b4bc50fcb9d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-middle-up.target.gz",
+      "affectedVertices": 126,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-volume-decr.target.gz",
+      "bytes": 580,
+      "sha256": "b2f940f8187112ee233ddfcdfb4a025fa01ee878b17dc44c64971c96583e7caf",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-volume-decr.target.gz",
+      "affectedVertices": 108,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-volume-incr.target.gz",
+      "bytes": 861,
+      "sha256": "e11c109910b3941d5b6c809f6a1c28c12bf08f67f5c126d109002c1aacd43ef6",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-volume-incr.target.gz",
+      "affectedVertices": 168,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-width-decr.target.gz",
+      "bytes": 633,
+      "sha256": "9915b24e1bb09f2b66ee7106e8f39746cf84941a8afdaeef0ed09bf1b52498cd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-width-decr.target.gz",
+      "affectedVertices": 166,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/mouth/mouth-upperlip-width-incr.target.gz",
+      "bytes": 2602,
+      "sha256": "6d1ab3f6db37f2d7c2a1c6e23e2433ffcc77d15f29b6aed2117e0a4400856538",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/mouth/mouth-upperlip-width-incr.target.gz",
+      "affectedVertices": 714,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-base-down.target.gz",
+      "bytes": 1016,
+      "sha256": "d7672a1bb3412ba0a55d0a92e87c36cc1625baf56a78dc931c642e4f92f69768",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-base-down.target.gz",
+      "affectedVertices": 311,
+      "largestVertexIndex": 11965
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-base-up.target.gz",
+      "bytes": 1003,
+      "sha256": "b2ad49cc3a6793372fb0f4faa8dedb6fb2f536962432e96b7f0b4d1c15652a85",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-base-up.target.gz",
+      "affectedVertices": 305,
+      "largestVertexIndex": 11965
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-compression-compress.target.gz",
+      "bytes": 492,
+      "sha256": "2101c4f237ba7a3d9b75a69b89468092a406c438c0d7373f00a35af937bea1cd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-compression-compress.target.gz",
+      "affectedVertices": 92,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-compression-uncompress.target.gz",
+      "bytes": 234,
+      "sha256": "e071e78dfff8d33645488378dcfb269c2ab67e84a47f947d83c5e29a2981c835",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-compression-uncompress.target.gz",
+      "affectedVertices": 36,
+      "largestVertexIndex": 11864
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-curve-concave.target.gz",
+      "bytes": 377,
+      "sha256": "2103807fe041cc36c881d706e86bd65ac9d8a9bdce0b1c37b41e5911ecab753c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-curve-concave.target.gz",
+      "affectedVertices": 70,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-curve-convex.target.gz",
+      "bytes": 304,
+      "sha256": "7c9232bd988ab0ed6373e994ac566623d3affac65c645aee78487a1e47a3253e",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-curve-convex.target.gz",
+      "affectedVertices": 52,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-flaring-decr.target.gz",
+      "bytes": 788,
+      "sha256": "6cd73545abc05e00aef9a21cc49772c030a521a333042bf8d56f98460ce0e476",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-flaring-decr.target.gz",
+      "affectedVertices": 158,
+      "largestVertexIndex": 11753
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-flaring-incr.target.gz",
+      "bytes": 778,
+      "sha256": "36413e04c15c2672d1b158621381c793c6fc2228ea4626cec70afbbf746528a2",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-flaring-incr.target.gz",
+      "affectedVertices": 138,
+      "largestVertexIndex": 11746
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-greek-decr.target.gz",
+      "bytes": 186,
+      "sha256": "dbbf961e2ec0a24476c73b1783d6a363d37b96ba148686ce80f9ae1142800253",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-greek-decr.target.gz",
+      "affectedVertices": 27,
+      "largestVertexIndex": 6914
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-greek-incr.target.gz",
+      "bytes": 268,
+      "sha256": "af337919c0f0a0f5eb30a51f7d6031b05c0bef1009b65d1378f7be6a397544b3",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-greek-incr.target.gz",
+      "affectedVertices": 45,
+      "largestVertexIndex": 6945
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-hump-decr.target.gz",
+      "bytes": 200,
+      "sha256": "f24247d606ad4a9b3f15f6afa187009865cfadcd1669d79d30876a8085cadb53",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-hump-decr.target.gz",
+      "affectedVertices": 30,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-hump-incr.target.gz",
+      "bytes": 1368,
+      "sha256": "ca6649d78752cca02fdb37f10804e021713b4fbfe2f85136e12b5787cc654aa6",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-hump-incr.target.gz",
+      "affectedVertices": 414,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-nostrils-angle-down.target.gz",
+      "bytes": 806,
+      "sha256": "01e88f10c24d1ecbdf2e764b929d0ff100ebf70691085790626d9eae57c93214",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-nostrils-angle-down.target.gz",
+      "affectedVertices": 194,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-nostrils-angle-up.target.gz",
+      "bytes": 922,
+      "sha256": "1ff92fef08a0236c7d75eb848f93c58d544cbfe011cd9bee0530486b5c566842",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-nostrils-angle-up.target.gz",
+      "affectedVertices": 212,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-nostrils-width-decr.target.gz",
+      "bytes": 858,
+      "sha256": "7c08d53d08ad0d397853d8ecdef5df200c697dc9afee8bf09a73f94a8287664f",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-nostrils-width-decr.target.gz",
+      "affectedVertices": 208,
+      "largestVertexIndex": 11965
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-nostrils-width-incr.target.gz",
+      "bytes": 1121,
+      "sha256": "bc3d4108a0d10e8ef7dea5ebc7cbdc89da476285ff8413f58bcb4401bf2b122b",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-nostrils-width-incr.target.gz",
+      "affectedVertices": 280,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-point-down.target.gz",
+      "bytes": 508,
+      "sha256": "58498fbb0b77572e90bf4fd50ca30f4cb6c402a5720b0161b26a8497f897ded6",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-point-down.target.gz",
+      "affectedVertices": 100,
+      "largestVertexIndex": 11686
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-point-up.target.gz",
+      "bytes": 342,
+      "sha256": "9ae8812270208a7c4da68bbe1e480430d1d674efcb8394e83b5c4d937fb3287d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-point-up.target.gz",
+      "affectedVertices": 77,
+      "largestVertexIndex": 11686
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-point-width-decr.target.gz",
+      "bytes": 416,
+      "sha256": "920cd53d57b8797414af73b59e54d34547ef2e1c79fa0a19ca55dbddc0aa7365",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-point-width-decr.target.gz",
+      "affectedVertices": 73,
+      "largestVertexIndex": 11746
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-point-width-incr.target.gz",
+      "bytes": 322,
+      "sha256": "bf5f782b014675be57aba4c840261308cc0d408660ecdfd22a42d47a756a016c",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-point-width-incr.target.gz",
+      "affectedVertices": 58,
+      "largestVertexIndex": 11686
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-depth-decr.target.gz",
+      "bytes": 1503,
+      "sha256": "0842aa0f4265fef85b6e708cdd0b0665e9a951c08a1c768dc285206f0ae4c7ad",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-depth-decr.target.gz",
+      "affectedVertices": 359,
+      "largestVertexIndex": 11912
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-depth-incr.target.gz",
+      "bytes": 1384,
+      "sha256": "49f63b72f04f637ed38061acce579c0948d29175d949bf21e6bfed354c0a10bf",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-depth-incr.target.gz",
+      "affectedVertices": 377,
+      "largestVertexIndex": 11948
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-horiz-decr.target.gz",
+      "bytes": 1234,
+      "sha256": "95d8dc4a3589bbb6105191abc6e3cae47c3c424ce189b5f0a611dc098806060d",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-horiz-decr.target.gz",
+      "affectedVertices": 312,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-horiz-incr.target.gz",
+      "bytes": 1802,
+      "sha256": "ba550cc15c894a4412bb368acc92bd6ad94bbb63d0135c561fe30230ef6344bd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-horiz-incr.target.gz",
+      "affectedVertices": 494,
+      "largestVertexIndex": 11965
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-vert-decr.target.gz",
+      "bytes": 1352,
+      "sha256": "3eea81bc82ddca8e20c8fc4279092eb2c8540d05e0c2aacf868af5da4ebac108",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-vert-decr.target.gz",
+      "affectedVertices": 349,
+      "largestVertexIndex": 11912
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-scale-vert-incr.target.gz",
+      "bytes": 1580,
+      "sha256": "63d297c237e7054a1ea700b83454ef508bf5f42ba8f2eb6bc1eb747ad261f34b",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-scale-vert-incr.target.gz",
+      "affectedVertices": 407,
+      "largestVertexIndex": 11965
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-septumangle-decr.target.gz",
+      "bytes": 1578,
+      "sha256": "975cb99787b88754ec2c22b5fc224f3d3f7c8926c38f69c2f6877ae9e58f3d3b",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-septumangle-decr.target.gz",
+      "affectedVertices": 332,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-septumangle-incr.target.gz",
+      "bytes": 1384,
+      "sha256": "f219b45a439b86b798798f54752d5f692ecabbc999ca28a96a51b7c8e25c2fe7",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-septumangle-incr.target.gz",
+      "affectedVertices": 291,
+      "largestVertexIndex": 11948
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-backward.target.gz",
+      "bytes": 2017,
+      "sha256": "eec7b6953d995066afc08032dc74e8e2475b70d12c7844f33d242e1429ab0ea1",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-backward.target.gz",
+      "affectedVertices": 632,
+      "largestVertexIndex": 15109
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-down.target.gz",
+      "bytes": 1216,
+      "sha256": "37948d9b27095dda7c768ef40767649bef72f49a7d23b86d48b55468258c8d83",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-down.target.gz",
+      "affectedVertices": 414,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-forward.target.gz",
+      "bytes": 1389,
+      "sha256": "cce0ba778feb8d2262bf2fe29fe1ceb6ce87f32e8ab6295c9f718412a47868a5",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-forward.target.gz",
+      "affectedVertices": 445,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-in.target.gz",
+      "bytes": 1867,
+      "sha256": "e924be14d90e532a1454613fc96bdae52b04588f1263c4c982b214b93d6074d2",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-in.target.gz",
+      "affectedVertices": 607,
+      "largestVertexIndex": 13378
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-out.target.gz",
+      "bytes": 1853,
+      "sha256": "a6227d4b8135a1eb05c381cd5096bb5934d9f08a3794a49f2788bfe8c1ecb8d6",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-out.target.gz",
+      "affectedVertices": 607,
+      "largestVertexIndex": 13378
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-trans-up.target.gz",
+      "bytes": 1683,
+      "sha256": "90aeb775bf8d94f15b92be0059ec43d35b933621981df262d5277d164adcc9de",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-trans-up.target.gz",
+      "affectedVertices": 553,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-volume-decr.target.gz",
+      "bytes": 251,
+      "sha256": "7ef86294767b4813388c409541475684d6dec94711dde063154b49c9520a57bd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-volume-decr.target.gz",
+      "affectedVertices": 48,
+      "largestVertexIndex": 11686
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-volume-incr.target.gz",
+      "bytes": 790,
+      "sha256": "52c8b7528e3a817a21a17c6d5f9a0fb1c3a1b980d685024f90489386c037cc21",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-volume-incr.target.gz",
+      "affectedVertices": 132,
+      "largestVertexIndex": 11864
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width1-decr.target.gz",
+      "bytes": 297,
+      "sha256": "2810435d8aa494ddfbfebb69fa04cdf0f3e4587129c8aa051c9364c00849ce7f",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width1-decr.target.gz",
+      "affectedVertices": 62,
+      "largestVertexIndex": 6945
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width1-incr.target.gz",
+      "bytes": 311,
+      "sha256": "6818e340a06a968a51fb52a32c749dff0ec69fefbfc80a67c118d5e1f26ccb97",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width1-incr.target.gz",
+      "affectedVertices": 60,
+      "largestVertexIndex": 6945
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width2-decr.target.gz",
+      "bytes": 269,
+      "sha256": "31a68afb926715ed352b870168c88932c281cf85523dffd2492f6e213738d2cd",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width2-decr.target.gz",
+      "affectedVertices": 40,
+      "largestVertexIndex": 11865
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width2-incr.target.gz",
+      "bytes": 465,
+      "sha256": "c33140385195e670d434e43861621eb477cfba4e438cdc4762d9a3c8371cb65a",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width2-incr.target.gz",
+      "affectedVertices": 90,
+      "largestVertexIndex": 11912
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width3-decr.target.gz",
+      "bytes": 1078,
+      "sha256": "2b9f96444fcc2817b42703860050ddc0c9efd105fd99c43b254d1a56aca0e0f0",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width3-decr.target.gz",
+      "affectedVertices": 256,
+      "largestVertexIndex": 11966
+    },
+    {
+      "path": "src/mpfb/data/targets/nose/nose-width3-incr.target.gz",
+      "bytes": 1657,
+      "sha256": "6a6ae8f5dcf5b72e12fa9a79539b9ae44b53565f687040efead2b73189eb8a4b",
+      "source": "https://raw.githubusercontent.com/makehumancommunity/mpfb2/817587ceb2ea03ea17a5b47e04396cbb4ddfa2d5/src/mpfb/data/targets/nose/nose-width3-incr.target.gz",
+      "affectedVertices": 415,
+      "largestVertexIndex": 11966
+    }
+  ]
+}

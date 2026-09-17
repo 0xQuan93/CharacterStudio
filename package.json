@@ -16,7 +16,7 @@
     "lint:js": "eslint --cache --ext .js,.jsx ./src",
     "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
     "get-assets": "cd public && git clone --depth 1 --branch main https://github.com/m3-org/loot-assets.git",
-    "test:workbench": "node tests/workbench-core.test.mjs && node tests/workbench-color-roundtrip.test.mjs && node tests/workbench-appearance.test.mjs && python3 tests/face-controls.test.py"
+    "test:workbench": "node tests/workbench-core.test.mjs && node tests/workbench-color-roundtrip.test.mjs && node tests/workbench-appearance.test.mjs && python3 tests/face-controls.test.py && node tests/workbench-sculpt.test.mjs && node tests/workbench-geometry.test.mjs && node tests/workbench-primitive-colors.test.mjs && node tests/workbench-generator.test.mjs && node tests/workbench-painted-shade.test.mjs && node tests/workbench-viewport-materials.test.mjs"
   },
   "dependencies": {
     "@ethersproject/providers": "^5.5.1",

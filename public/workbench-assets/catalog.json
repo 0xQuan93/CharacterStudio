@@ -26,6 +26,18 @@
     "thumbnail": "/workbench-assets/thumbnails/human.webp"
   },
   {
+    "id": "beta-hair-female",
+    "name": "Female Hair Study",
+    "category": "Human",
+    "url": "/workbench-assets/humanoid-expansion/human-hair-female.vrm",
+    "license": "CC0-1.0",
+    "author": "pixiv Inc. (historical VRoid beta sample)",
+    "source": "https://github.com/madjin/vrm-samples/blob/master/vroid/beta/HairSample_Female.vrm",
+    "licenseUrl": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+    "description": "Historical CC0 humanoid with two hair materials, spring bones and facial expressions. A separate complete model; hair is not yet interchangeable with the male base.",
+    "sha256": "1acf77eccaee4ef1c0fcee0440b4e94fdc141f7e252b9a5a434ad678c1ec75dd"
+  },
+  {
     "id": "quaternius-robot",
     "name": "Friendly Robot",
     "category": "Robot",

@@ -1,3 +1,4 @@
+import { validateSculptOffsets } from "./sculpt.js"
 export const PROJECT_SCHEMA = "character-studio/project"
 export const MAX_SOURCE_BYTES = 50 * 1024 * 1024
 export const MAX_TEXTURE_BYTES = 8 * 1024 * 1024
@@ -191,7 +192,7 @@ export function validateProject(input) {
   if (
     !isObject(input) ||
     input.schema !== PROJECT_SCHEMA ||
-    input.version !== 1
+    ![1, 2].includes(input.version)
   )
     fail("Unsupported character project format")
   if (!["library", "import", "spirit"].includes(input.kind))
@@ -232,6 +233,50 @@ export function validateProject(input) {
   result.textures = validateTextures(input.textures)
   if (input.kind === "spirit" && Object.keys(result.textures).length)
     fail("Spirit textures are not supported; use the spirit palette controls")
+  if (input.sculpt !== undefined) {
+    if (!isObject(input.sculpt) || Object.keys(input.sculpt).length > 32)
+      fail("Invalid sculpt geometry map")
+    result.sculpt = {}
+    for (const [key, offsets] of Object.entries(input.sculpt)) {
+      if (!/^(0|[1-9]\d{0,5})$/.test(key)) fail("Invalid sculpt accessor")
+      result.sculpt[key] = validateSculptOffsets(offsets, 300000, 0.12)
+    }
+    if (Object.keys(result.sculpt).length) result.version = 2
+  }
+  if (input.paintShadeRatios !== undefined) {
+    if (
+      !isObject(input.paintShadeRatios) ||
+      Object.keys(input.paintShadeRatios).length > 128
+    )
+      fail("Invalid painted shade ratios")
+    result.paintShadeRatios = {}
+    for (const [key, value] of Object.entries(input.paintShadeRatios)) {
+      if (
+        !/^(0|[1-9]\d{0,5})$/.test(key) ||
+        !Array.isArray(value) ||
+        value.length !== 3
+      )
+        fail("Invalid painted shade ratio")
+      result.paintShadeRatios[key] = value.map((v) =>
+        finite(v, 0, 1, "painted shade ratio"),
+      )
+    }
+    if (Object.keys(result.paintShadeRatios).length) result.version = 2
+  }
+  if (input.primitiveColors !== undefined) {
+    if (
+      !isObject(input.primitiveColors) ||
+      Object.keys(input.primitiveColors).length > 128
+    )
+      fail("Invalid hair section colors")
+    result.primitiveColors = {}
+    for (const [key, value] of Object.entries(input.primitiveColors)) {
+      if (!/^(0|[1-9]\d{0,5}):(0|[1-9]\d{0,5})$/.test(key))
+        fail("Invalid hair section index")
+      result.primitiveColors[key] = hex(value, "hair section color")
+    }
+    if (Object.keys(result.primitiveColors).length) result.version = 2
+  }
   const colors = Object.entries(input.colors || {})
   const morphs = Object.entries(input.morphs || {})
   if (colors.length > 2048 || morphs.length > 8192)

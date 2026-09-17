@@ -1,0 +1,15 @@
+{
+  "validatorVersion": "2.0.0-dev.3.10",
+  "errors": 0,
+  "warnings": 234810,
+  "infos": 7,
+  "hints": 0,
+  "truncated": false,
+  "warningCodes": [
+    "INVALID_EXTENSION_NAME_FORMAT",
+    "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+    "NODE_SKINNED_MESH_NON_ROOT",
+    "ACCESSOR_JOINTS_USED_ZERO_WEIGHT"
+  ],
+  "errorsDetail": []
+}
