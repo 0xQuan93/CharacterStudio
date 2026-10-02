@@ -1,0 +1,79 @@
+[
+  {
+    "id": "human-face-study",
+    "name": "Human Face Study",
+    "category": "Human",
+    "url": "/workbench-assets/human-face-controls.vrm",
+    "license": "CC0-1.0",
+    "author": "pixiv Inc. (historical VRoid beta sample)",
+    "source": "https://github.com/madjin/vrm-samples/blob/master/vroid/beta/HairSample_Male.vrm",
+    "licenseUrl": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+    "description": "CC0 human starter with bounded jaw width, chin length and nose width controls.",
+    "sha256": "b51f9d3815655436f0c3875a5f095c4825dfca1c6190ce263fec6fa644e16ba8",
+    "thumbnail": "/workbench-assets/thumbnails/human.webp"
+  },
+  {
+    "id": "beta-hair-male",
+    "name": "Anime Hair Study",
+    "category": "Human",
+    "url": "/workbench-assets/human-hair-male.vrm",
+    "license": "CC0-1.0",
+    "author": "pixiv Inc. (historical VRoid beta sample)",
+    "source": "https://github.com/madjin/vrm-samples/blob/master/vroid/beta/HairSample_Male.vrm",
+    "licenseUrl": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+    "description": "Historical CC0 HairSample_Male: a rigged anime starting point.",
+    "sha256": "b1e0179be9b42cf7ddc9ab52ef336e864cd39cc971db2a0151e5b115c16bf7fe",
+    "thumbnail": "/workbench-assets/thumbnails/human.webp"
+  },
+  {
+    "id": "beta-hair-female",
+    "name": "Female Hair Study",
+    "category": "Human",
+    "url": "/workbench-assets/humanoid-expansion/human-hair-female.vrm",
+    "license": "CC0-1.0",
+    "author": "pixiv Inc. (historical VRoid beta sample)",
+    "source": "https://github.com/madjin/vrm-samples/blob/master/vroid/beta/HairSample_Female.vrm",
+    "licenseUrl": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+    "description": "Historical CC0 humanoid with two hair materials, spring bones and facial expressions. A separate complete model; hair is not yet interchangeable with the male base.",
+    "sha256": "1acf77eccaee4ef1c0fcee0440b4e94fdc141f7e252b9a5a434ad678c1ec75dd"
+  },
+  {
+    "id": "quaternius-robot",
+    "name": "Friendly Robot",
+    "category": "Robot",
+    "url": "/workbench-assets/robot.glb",
+    "license": "CC0-1.0",
+    "author": "Quaternius",
+    "source": "https://opengameart.org/content/animated-lowpoly-robot",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "description": "Animated robot with 14 embedded clips; generic glTF rig, not VRM.",
+    "sha256": "954a3396213eb4d3190eae138825a1456634ff7181ee0e7c6e9c6337ee8091b8",
+    "thumbnail": "/workbench-assets/thumbnails/robot.webp"
+  },
+  {
+    "id": "quaternius-bat",
+    "name": "Little Bat",
+    "category": "Creature",
+    "url": "/workbench-assets/bat.glb",
+    "license": "CC0-1.0",
+    "author": "Quaternius",
+    "source": "https://opengameart.org/content/lowpoly-animated-monsters",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "description": "Flying creature with five embedded clips; generic glTF rig, not humanoid.",
+    "sha256": "37f6bd8c5663e572eec06f2231bdf491b2754b82ec60afa68c0074ba8be949f5",
+    "thumbnail": "/workbench-assets/thumbnails/bat.webp"
+  },
+  {
+    "id": "quaternius-slime",
+    "name": "Slime",
+    "category": "Creature",
+    "url": "/workbench-assets/slime.glb",
+    "license": "CC0-1.0",
+    "author": "Quaternius",
+    "source": "https://opengameart.org/content/lowpoly-animated-monsters",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "description": "Expressive blob with four embedded clips; generic glTF rig, not humanoid.",
+    "sha256": "af83632a3316ec6336c30b6da02b97bdb9b51441349b2fa9ab568731c2ce1f6f",
+    "thumbnail": "/workbench-assets/thumbnails/slime.webp"
+  }
+]

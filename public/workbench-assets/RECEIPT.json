@@ -1,0 +1,133 @@
+{
+  "checkedAt": "2026-09-17",
+  "files": [
+    {
+      "file": "bat.glb",
+      "bytes": 529932,
+      "sha256": "37f6bd8c5663e572eec06f2231bdf491b2754b82ec60afa68c0074ba8be949f5",
+      "meshes": 2,
+      "skins": 2,
+      "animations": [
+        "BatArmature|Bat_Hit",
+        "BatArmature|Bat_Attack2",
+        "BatArmature|Bat_Flying",
+        "BatArmature|Bat_Attack",
+        "BatArmature|Bat_Death"
+      ],
+      "selfContained": true
+    },
+    {
+      "file": "human-hair-male.vrm",
+      "bytes": 18481836,
+      "sha256": "b1e0179be9b42cf7ddc9ab52ef336e864cd39cc971db2a0151e5b115c16bf7fe",
+      "meshes": 3,
+      "skins": 3,
+      "animations": [],
+      "selfContained": true
+    },
+    {
+      "file": "monsters-source.zip",
+      "bytes": 1408836,
+      "sha256": "acab2bddc5939f9b1b92c930507d73e0fd80037a39631cf2049bb6cfcaec1acd"
+    },
+    {
+      "file": "robot-source.zip",
+      "bytes": 7015900,
+      "sha256": "5128d2cf906835895b931f6c1e764296ba2e01d3a30d809035fc6c1ee8a1c1ee"
+    },
+    {
+      "file": "robot.glb",
+      "bytes": 1429876,
+      "sha256": "954a3396213eb4d3190eae138825a1456634ff7181ee0e7c6e9c6337ee8091b8",
+      "meshes": 14,
+      "skins": 2,
+      "animations": [
+        "RobotArmature|Robot_No",
+        "RobotArmature|Robot_Sitting",
+        "RobotArmature|Robot_Punch",
+        "RobotArmature|Robot_Dance",
+        "RobotArmature|Robot_Standing",
+        "RobotArmature|Robot_Idle",
+        "RobotArmature|Robot_WalkJump",
+        "RobotArmature|Robot_Yes",
+        "RobotArmature|Robot_Wave",
+        "RobotArmature|Robot_Death",
+        "RobotArmature|Robot_Walking",
+        "RobotArmature|Robot_Running",
+        "RobotArmature|Robot_ThumbsUp",
+        "RobotArmature|Robot_Jump"
+      ],
+      "selfContained": true
+    },
+    {
+      "file": "slime.glb",
+      "bytes": 320152,
+      "sha256": "af83632a3316ec6336c30b6da02b97bdb9b51441349b2fa9ab568731c2ce1f6f",
+      "meshes": 1,
+      "skins": 1,
+      "animations": [
+        "Armature|Slime_Walk",
+        "Armature|Slime_Death",
+        "Armature|Slime_Idle",
+        "Armature|Slime_Attack"
+      ],
+      "selfContained": true
+    },
+    {
+      "file": "human-hair-male.source.vrm",
+      "bytes": 18481892,
+      "sha256": "7aeca142dabbc26ba0f5b9c998c8f3cb6df341287d67788427ac837223785a3f",
+      "role": "Unmodified mirrored CC0 source; use human-hair-male.vrm derivative in application"
+    }
+  ],
+  "conversion": "Three.js FBXLoader and GLTFExporter; source units/transforms retained. >4 skin weights were trimmed by FBXLoader. Materials converted by GLTFExporter with Phong-to-PBR approximation. Visual validation required.",
+  "sourceDownloads": {
+    "robot-source.zip": "https://opengameart.org/sites/default/files/Animated%20Robot%20-%20Oct%202018.zip",
+    "monsters-source.zip": "https://opengameart.org/sites/default/files/Animated%20Monster%20Pack%20by%20%40Quaternius.zip"
+  },
+  "repairs": [
+    {
+      "file": "robot.glb",
+      "change": "skin[1].skeleton corrected from node 3 to node 2, verified lowest common ancestor of all joints. Binary chunks, joints, inverse bind matrices, animations and source archive unchanged."
+    },
+    {
+      "file": "human-hair-male.vrm",
+      "change": "Removed invalid optional skin[0].skeleton (previous node 16). All other JSON values, metadata, joint arrays, inverse bind matrices and binary chunks unchanged. Original saved as human-hair-male.source.vrm.",
+      "verifiedOnlyIntendedDifference": true
+    },
+    {
+      "files": [
+        "robot.glb",
+        "bat.glb",
+        "slime.glb"
+      ],
+      "change": "Recover authored per-material opacity from bundled original Robot.mtl/Bat.mtl/Slime.mtl by exact material name (all d=1). Original FBX has template Opacity=1 but material instance TransparentColor=white; Three FBXLoader does not inherit template and incorrectly falls back to alpha0. Converter now uses source MTL opacity before export; no generic runtime import changes."
+    }
+  ],
+  "validation": {
+    "validator": "Khronos gltf-validator installed in /tmp/avatar-gltf-validation",
+    "scope": "Source models after skin.skeleton repair; does not claim export or visual acceptance",
+    "ignoredIssues": [
+      "ACCESSOR_JOINTS_USED_ZERO_WEIGHT"
+    ],
+    "truncated": false,
+    "results": {
+      "robot.glb": {
+        "errors": 0,
+        "warnings": 4
+      },
+      "bat.glb": {
+        "errors": 0,
+        "warnings": 4
+      },
+      "slime.glb": {
+        "errors": 0,
+        "warnings": 2
+      },
+      "human-hair-male.vrm": {
+        "errors": 0,
+        "warnings": 133
+      }
+    }
+  }
+}

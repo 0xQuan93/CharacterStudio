@@ -7,6 +7,7 @@ export default defineConfig({
 //  base: '/CharacterStudio/', NOTE: For Github pages, you need to add the base URL (name of the repo)
   build: {
     outDir: './build',
+    rollupOptions: { input: { main: 'index.html', workbench: 'workbench.html' } },
   },
   resolve: {
     alias: {

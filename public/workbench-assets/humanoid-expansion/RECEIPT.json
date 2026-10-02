@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-09-17",
+  "name": "HairSample_Female",
+  "author": "pixiv Inc.",
+  "license": "CC0-1.0",
+  "licenseEvidence": "https://vroid.pixiv.help/hc/en-us/articles/4402614652569-Do-VRoid-Studio-s-sample-models-come-with-conditions-of-use",
+  "source": "https://raw.githubusercontent.com/madjin/vrm-samples/master/vroid/beta/HairSample_Female.vrm",
+  "sourceRole": "Historical file mirror; licensing established from original publisher FAQ and matching embedded title/license, not mirror repository license.",
+  "files": [
+    {
+      "file": "human-hair-female.source.vrm",
+      "bytes": 17518216,
+      "sha256": "adfd242317aaabc773f31f7fff7b013979fbb5baa47e97427a78913d9cb4e979"
+    },
+    {
+      "file": "human-hair-female.vrm",
+      "bytes": 17518164,
+      "sha256": "1acf77eccaee4ef1c0fcee0440b4e94fdc141f7e252b9a5a434ad678c1ec75dd"
+    }
+  ],
+  "repair": [
+    {
+      "skin": 0,
+      "removedSkeleton": 20
+    }
+  ],
+  "embeddedMetadata": {
+    "version": "",
+    "author": "",
+    "contactInformation": "",
+    "reference": "",
+    "title": "HairSample_Female",
+    "texture": 24,
+    "allowedUserName": "Everyone",
+    "violentUssageName": "Allow",
+    "sexualUssageName": "Allow",
+    "commercialUssageName": "Allow",
+    "otherPermissionUrl": "",
+    "licenseName": "CC0",
+    "otherLicenseUrl": ""
+  },
+  "humanoidBones": 54,
+  "springGroups": 10,
+  "expressionGroups": 15,
+  "meshes": [
+    {
+      "name": "Face.baked",
+      "primitives": 10,
+      "vertices": 2361,
+      "morphTargetsPerPrimitive": 41,
+      "expressionBoundTargets": 15,
+      "authoredAnatomicalControls": 0,
+      "triangles": 3158
+    },
+    {
+      "name": "Body.baked",
+      "primitives": 6,
+      "vertices": 7131,
+      "morphTargetsPerPrimitive": 0,
+      "expressionBoundTargets": 0,
+      "authoredAnatomicalControls": 0,
+      "triangles": 11526
+    },
+    {
+      "name": "Hair001.baked",
+      "primitives": 108,
+      "vertices": 10028,
+      "morphTargetsPerPrimitive": 0,
+      "expressionBoundTargets": 0,
+      "authoredAnatomicalControls": 0,
+      "triangles": 12384
+    }
+  ],
+  "materialNames": [
+    "F00_000_00_FaceMouth_00_FACE",
+    "F00_000_00_EyeWhite_00_EYE",
+    "F00_000_00_FaceEyeline_00_FACE",
+    "F00_000_00_FaceEyelash_00_FACE",
+    "F00_000_00_FaceBrow_00_FACE",
+    "F00_000_00_EyeIris_00_EYE",
+    "F00_000_00_EyeHighlight_00_EYE",
+    "F00_000_00_Face_00_SKIN",
+    "F00_000_00_EyeExtra_01_EYE",
+    "F00_002_02_Body_00_SKIN",
+    "F00_002_01_Tops_01_CLOTH",
+    "F00_002_01_Shoes_01_CLOTH",
+    "F00_000_Hair_00_HAIR_01",
+    "F00_000_Hair_00_HAIR_02"
+  ],
+  "status": "Local runtime derivative; standalone VRM, not a fitted modular hairstyle for the male base."
+}
