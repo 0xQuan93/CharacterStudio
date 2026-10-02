@@ -1,62 +1,33 @@
-# Character Studio
+# Character Studio Workbench by 0xQuan
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![Discord](https://img.shields.io/discord/770382203782692945?label=Discord&logo=Discord)](https://discord.gg/8zBvTMb8SU)
-[![Twitter Follow](https://img.shields.io/twitter/follow/m3org)](https://twitter.com/m3org)
+A local browser editor for VRM avatars and animated GLB characters. Choose a bundled starter or import a model, edit it, save a portable project, and export the result. The workbench is built on the [M3-org CharacterStudio](https://github.com/M3-org/CharacterStudio) project; its original modular editor is still available at `/` when its separate upstream asset pack is installed. This fork retains the upstream MIT license and credits.
 
+## Run locally
 
-An open, collaborative, and evolving 3D avatar studio for making glTF / VRM avatars with.
-
-![image](https://github.com/M3-org/CharacterStudio/assets/32600939/fad3002f-78cd-4cd2-8eae-0c1663a86d25)
-
-:star: **NEW: DOCS!!!** https://m3-org.github.io/characterstudio-docs/ ⭐
-
-# Installation
-
-> Note: You need loot-assets imported to public folder for this to work! https://github.com/m3-org/loot-assets
+Use Node.js 20.19+ or 22.12+ (Vite 7's supported range). From the repository root:
 
 ```bash
-# Clone the repo and change directory into it
-git clone https://github.com/M3-org/CharacterStudio
-cd CharacterStudio
-
-# Install dependencies with legacy peer deps flag to ignore React errors
-npm install
-npm run dev
-
-# Install default assets
-npm run get-assets
+SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm ci --no-fund --no-audit
+npm run test:workbench
+npm run build
+npm run serve -- --host 127.0.0.1 --port 18991 --strictPort
 ```
 
----
+Open <http://127.0.0.1:18991/workbench.html>. Use `npm run dev` during development; Vite serves the same route. No account or API key is needed for the workbench. The classic upstream editor at `/` uses a separate [loot-assets](https://github.com/m3-org/loot-assets) checkout; run `npm run get-assets` only if you want that editor and have reviewed that pack's terms.
 
-## Load Your Assets
+## What you can make
 
-We separate the program from the asset packs. We have some sample assets here: https://github.com/memelotsqui/character-assets
-![Screenshot from 2023-10-17 17-10-38](https://github.com/M3-org/CharacterStudio/assets/32600939/23768dc3-b834-4f70-a986-a4a0141c4014)
+- Edit the bundled historical CC0 VRM human studies with semantic skin, eye, brow, and hair colors; bounded face targets; sculpting; texture painting; section tints; and seeded variations.
+- Edit the CC0 Robot, Bat, and Slime GLB starters, or import a local VRM/GLB. Preview source animations and hide parts where supported.
+- Save a portable `.avatar.json` project with its source bytes and edit recipe. Reopen it to keep editing. Export the current model as VRM when it has a supported humanoid VRM rig, or GLB for generic models.
+- Undo or redo edits in the current session. The latest project also autosaves in this browser; download a project file to keep separate versions or move machines.
 
-Refer to docs to add your own 3d models
+The workbench edits existing geometry and materials. It does not create a humanoid rig from a static image, refit clothes, add topology, or guarantee every imported model will export. Strong sculpt edits can affect facial expressions and skinning; inspect motion and reimport an export before using it elsewhere. The original upstream editor, PoseLab, and WearHaus are separate tools and are not required for this workbench.
 
-## Features
-- **Personalized Creation**: Point and click to build 3D characters
-    - Drag and drop local 3D files (VRM) and textures
-    - Color picker for adding a personal touch
-    - Export creatoins as glb and VRM + screenshots
-- **Dynamic animation**: Variety of programmable animations
-- **Effortless Optimization** One-click VRM optimizer
-    - Merge skinned meshes + Texture atlassing
-        - Can reduce avatars to a single draw call!
-- **Batch Export**: Randomize or adhere to metadata schemas
-- **Transparent Development**: Open-source MIT licensed codebase
-- **Robust Rendering**: Using Three.js, WebGL, and React
-    - Recently refactored to NOT need React as a dependency
-    - Logic is now all inside `CharacterManager` class
-- **Face auto culling**: Automatically cull undereneath faces with custom layer system
+See [workbench guide](docs/workbench/README.md), [starter asset provenance](docs/workbench/ASSETS.md), and [face study details](docs/workbench/FACE-CONTROLS.md). Starter models are CC0 with their own provenance and receipts; the MIT code license does not grant rights to a model that you import.
 
----
+## Development and attribution
 
-## Special Thanks
+`npm run test:workbench` covers project bounds, source-preserving export, color conversion, shape edits, sculpting, painting, and seeded generation. `npm run build` builds both the upstream and workbench entry points. The workbench source is under `src/workbench/`, with public starter assets under `public/workbench-assets/`.
 
-Shoutout to [original repo by Webaverse](https://github.com/webaverse/characterstudio)
-
-Thanks m00n, memelotsqui, boomboxhead, jin, and many others for contributing
+CharacterStudio began at [Webaverse](https://github.com/webaverse/characterstudio) and is maintained by [M3-org](https://github.com/M3-org/CharacterStudio). The 0xQuan workbench adds the local editor and curated starter library. See [LICENSE](LICENSE) for code terms and [ASSETS.md](docs/workbench/ASSETS.md) for model terms. The bundled MPFB face foundation is source data for future work; it is not served as an editable starter.

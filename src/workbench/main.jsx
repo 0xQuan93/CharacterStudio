@@ -70,7 +70,7 @@ const seedAssets = [
     category: "Companion",
     description:
       "An original, editable companion. Two ears. Small feet. One memory.",
-    author: "Quan + Codex",
+    author: "0xQuan + Codex",
     license: "Original",
     source: "",
     licenseUrl: "",
@@ -575,7 +575,7 @@ function App() {
         <a className="brand" href="/workbench.html">
           <span className="brand-mark">◈</span>
           <span>
-            CHARACTER STUDIO<small>LOCAL WORKBENCH</small>
+            CHARACTER STUDIO<small>0xQUAN WORKBENCH</small>
           </span>
         </a>
         <div className="project-title">
@@ -699,25 +699,6 @@ function App() {
                 View source & permissions
               </button>
             </p>
-          </div>
-          <div className="companion-links">
-            <small>YOUR CREATIVE TOOLS</small>
-            <a href="http://127.0.0.1:18992/" target="_blank" rel="noreferrer">
-              PoseLab <span>Pose & animate ↗</span>
-            </a>
-            <a href="http://127.0.0.1:18993/" target="_blank" rel="noreferrer">
-              WearHaus 3D <span>Paint & fit ↗</span>
-            </a>
-            <a
-              href="/workbench-conversion.html"
-              target="_blank"
-              rel="noreferrer"
-            >
-              VRM converter <span>GLB / FBX & Quan PNG ↗</span>
-            </a>
-            <a href="/" target="_blank" rel="noreferrer">
-              Classic studio <span>Modular VRM parts ↗</span>
-            </a>
           </div>
         </aside>
         <main className="stage">
@@ -939,14 +920,6 @@ function App() {
                   topology, or guarantee every facial expression still deforms
                   well. Check the face and body in Motion after sculpting.
                 </p>
-                <a
-                  className="button wide"
-                  href="/workbench-reference.html"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Quan reference ↗
-                </a>
               </>
             )}
             {tab === "Appearance" && (
@@ -957,10 +930,10 @@ function App() {
                 </p>
                 {appearance.groups.length > 0 && (
                   <div className="callout">
-                    <h3>Quan · palette study</h3>
+                    <h3>Night mint palette</h3>
                     <p>
-                      Warm skin, dark hair, a mint eye tint. A starting palette
-                      for the reference design.
+                      Warm skin, dark hair, and a mint eye tint. Adjust these
+                      sample colors for your own character.
                     </p>
                     <button
                       className="wide"
@@ -982,15 +955,8 @@ function App() {
                         change({ colors })
                       }}
                     >
-                      Apply Quan palette
+                      Apply night mint palette
                     </button>
-                    <a
-                      href="/workbench-reference.html"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Open Quan reference sheet ↗
-                    </a>
                   </div>
                 )}
                 {appearance.hairMeshes.length > 0 && (
@@ -1861,13 +1827,13 @@ function App() {
                   </p>
                 </div>
                 <div className="callout">
-                  <h3>Made for your other projects</h3>
+                  <h3>Use your export</h3>
                   <p>
-                    VRM → PoseLab / avatar runtimes
+                    VRM → compatible humanoid avatar runtimes
                     <br />
-                    GLB → Signal Walk / WavID habitats / Blender
+                    GLB → glTF tools and 3D scenes
                     <br />
-                    Project → return here and keep creating
+                    Project → reopen here for another edit
                   </p>
                 </div>
               </>

@@ -1,29 +1,17 @@
-# Local avatar workbench 0.3
+# Workbench guide
 
-[New in 0.3: sculpting, texture painting, hair accents and seeded avatars](RELEASE-0.3.md). [Earlier appearance controls and Quan reference](RELEASE-0.2.md).
+Open `/workbench.html` after starting the local Vite server described in the [repository README](../../README.md). Pick a starter card or import a VRM/GLB from your device. The bundled human studies are VRM; Robot, Bat, and Slime are generic animated GLB models. A procedural Signal spirit is also included.
 
-Open `/workbench.html` for the broad human, creature, robot and companion editor. The original modular Character Studio remains at `/`.
+## Edit and save
 
-```sh
-SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm ci --no-fund --no-audit
-npm run test:workbench
-npm run build
-npm run serve -- --host 127.0.0.1 --port 18991 --strictPort
-```
+- **Appearance** groups human skin, hair, brow, and eye colors when the model has recognizable material names. The Night mint button is a sample palette, not a likeness generator. Face targets on Human Face Study are specific to that model.
+- **Shape** changes available model proportions and morph targets. **Sculpt** moves vertices on supported uncompressed triangle geometry. **Surface** edits material colors and UV textures; painting is limited to 2048-pixel images in the editor. **Parts** hides supported source meshes. **Motion** previews embedded animation and expressions.
+- **Save project** downloads a portable `.avatar.json` with the imported source bytes and edits. Keep it if you want to revise an export later. The browser also autosaves its latest project locally. **Export** writes VRM for supported humanoid VRM sources and GLB for generic sources. Reopen exported files to check their appearance and motion.
 
-Visit http://127.0.0.1:18991/workbench.html. Installed starters are local. Choose a library card, edit Shape/Surface/Parts, preview Motion, then Save project and Export. Portable `.avatar.json` projects include source bytes and texture overrides. Autosave retains the latest project in this browser; download a portable file to keep distinct projects. Ctrl+S saves; Ctrl+Z/Shift+Ctrl+Z undo/redo; F frames the model outside text inputs.
+Undo and redo operate on the current edit history. Save distinct project files before changing source models. Imported content stays in the local browser session and files you explicitly download; check the rights of any model or texture before sharing an exported character or project file.
 
-The human exports VRM; generic characters and the original spirit export GLB. Existing source rigs, metadata and clips are retained. Whole-model proportions do not replace anatomical shape targets. Preview expressions and animation time are not baked into neutral exports. The original companion is a Zephyr study, not a final approved character.
+## Current limits
 
-The six curated model entries include exact provenance, source archives and repairs under `public/workbench-assets/`. Their catalog hashes are checked on load. The procedural spirit is original work. Third-party imports retain their own rights. Classic's separately installed Anata demo has restrictive rights and is not part of this CC0 library.
+The editor preserves much of a supported source model's rig, expressions, textures, and metadata, but it does not autorig images or arbitrary meshes, remesh, fit garments, or build a new hairstyle. Sculpting is bounded to supported geometry and can change deformation quality. Color controls may tint a source texture instead of replacing its pixels. Preview animation is not baked into a neutral export. Model-specific VRM and glTF behavior should be checked in the target runtime.
 
-Companion links target PoseLab on port18992 and WearHaus3D on18993; start those applications separately. Exchange painted textures only on a matching UV layout. WearHaus does not preserve all VRM extensions.
-
-The installed machine's `avatar-tools/open-character-studio.sh` imports the current Omarchy theme, starts production preview on demand and opens the app. Its stop script checks the recorded process before stopping it. Theme CSS is a local palette snapshot; it affects the workspace rather than exported materials.
-
-- [Quan transparent reference and GLB / FBX conversion](CONVERSION.md)
-- [Full specification and roadmap](PRODUCT-SPEC.md)
-- [Verification and known limits](VERIFICATION.md)
-- [Asset and creator research](research/assets-and-creators.md)
-- [Character Studio architecture audit](research/characterstudio-architecture.md)
-- [WearHaus audit](research/wearhaus-audit.md)
+The starter library and its license evidence are in [ASSETS.md](ASSETS.md). Human Face Study's authored controls are documented in [FACE-CONTROLS.md](FACE-CONTROLS.md).

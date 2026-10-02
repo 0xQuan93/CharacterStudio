@@ -16,6 +16,6 @@ Verification:
 
 - `python tests/face-controls.test.py` checks preserved source payload, rig/material/VRM metadata, original expression targets, consistent target counts, nonzero bounded displacement, and unchanged upper face.
 - Khronos glTF Validator reports zero errors. Uncapped warning counts and codes exactly match the original: 87,115 inherited warnings, mostly zero-weight joint references. VRM itself is an unsupported validator extension, so the browser runtime check remains necessary.
-- Browser/Three-VRM render inspection at neutral and all-three combined +/-1 shows coherent silhouettes and unchanged eye placement. Screenshots and validator report live in the local `avatar-tools/logs/face-controls-*` files.
+- Browser/Three-VRM render inspection at neutral and all-three combined +/-1 showed coherent silhouettes and unchanged eye placement during local acceptance. Recheck visual deformation after modifying this derivative or loading it in a different avatar runtime.
 
 The existing hair contains authored strands, joints and spring-bone behavior. A coordinate-scale operation has not been presented as a new haircut; a new hairstyle should be authored and checked against scalp collisions and its rig.
